@@ -1,0 +1,106 @@
+<div class="dondead_collection__tabs dondead_collection_el" style="display: flex; justify-content: center; gap: 10px;">
+  {% for block in section.blocks %}
+    <a
+      class="dondead_collection__tab_item{% if block.settings.link_url == request.path %} dondead_collection__tab_item_active w--current{% endif %}"
+      href="{{ block.settings.link_url }}"
+    >
+      {{- block.settings.link_name -}}
+    </a>
+  {% endfor %}
+</div>
+
+<style>
+  .dondead_collection__tabs {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: safe center;
+    overflow-x: auto;
+    overflow-y: hidden;
+    padding: 0 20px;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+  
+  .dondead_collection__tabs {
+    background: #f2f2f2b0;
+  }
+  
+  .dondead_collection__tabs::-webkit-scrollbar {
+      display: none !important;
+  }
+
+  .dondead_collection__tabs .dondead_collection__tab_item {
+      padding: 20px 16px 18px;
+      white-space: nowrap;
+      border-bottom: solid 2px transparent;
+      color: rgba(0, 0, 0, 0.5);
+      font-size: 14px;
+      font-weight: 700;
+      line-height: 16px;
+      letter-spacing: 0;
+      text-align: center;
+      text-transform: uppercase;
+      transition: all 200ms ease;
+  }
+
+  .dondead_collection__tabs .dondead_collection__tab_item:hover:not(.dondead_collection__tab_item_active) {
+      border-color: rgba(0, 0, 0, 0.5);
+      color: black;
+      cursor: pointer;
+  }
+
+  .dondead_collection__tabs .dondead_collection__tab_item.dondead_collection__tab_item_active {
+      border-color: black;
+      color: black;
+      cursor: default;
+  }
+  @media screen and (max-width: 750px) {
+    .dondead_collection__tabs {
+      justify-content: flex-start !important;
+    }
+  }
+  @media only screen and (max-width: 750px){
+    .dondead_collection__tabs .dondead_collection__tab_item {
+        padding: 12px 10px 10px;
+        color: #00000080;
+        font-size: 12px;
+        transition: all .2s ease;
+    }
+      .dondead_collection__tabs.dondead_collection_el {
+        display: flex;
+        padding-left: 12px!important;
+    }
+  }
+</style>
+{% schema %}
+ {
+   "name": "Collection list bar",
+   "settings": [
+
+   ],
+   "blocks":[
+               {
+                 "type": "text",
+                 "name": "links",
+             "settings": [
+               {
+                 "type": "text",
+                 "id": "link_name",
+                 "label": "Link name"
+               },
+           {
+             "type": "url",
+             "id": "link_url",
+             "label": "Link"
+           }
+           ]
+       }
+],
+   "presets": [
+     {
+       "name": "Collection list bar"
+     }
+   ]
+ }
+{% endschema %}

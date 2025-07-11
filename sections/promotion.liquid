@@ -1,0 +1,129 @@
+<div class="page-width" style="background: {{ section.settings.background }};">
+  <div class="our-container section">
+    {% for block in section.blocks %}
+    <div class="our-container-item">
+      {% if block.settings.promotions-image != blank %}
+        <div class="our-promotions-image">
+          <img height="24" width="24" src="{{ block.settings.promotions-image | image_url: width: 1500 }}">
+        </div>
+      {% endif %}
+      <div class="our-promotions-text" style="color: {{ section.settings.text_color }};">
+        {% if block.settings.promotions-heading != blank %}
+          <div class="our-promotions-heading">
+            <h2>{{ block.settings.promotions-heading }}</h2>
+          </div>
+        {% endif %}
+        {% if block.settings.promotions-paragraph != blank %}
+        <div class="our-promotions-paragraph">
+          {{ block.settings.promotions-paragraph }}
+        </div>
+        {% endif %}
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+</div>
+{% schema %}
+  {
+    "name": "Promotions",
+    "settings": [
+      {
+      "type": "color",
+      "id": "background",
+      "label": "Background",
+      "default": "#444444"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text color",
+      "default": "#ffffff"
+    }
+],
+"blocks":[
+
+{
+"name":"Promotions",
+"type":"Promotions",
+"settings":[
+{
+                   "type": "image_picker",
+                   "id": "promotions-image",
+                   "label": "Image"
+                  },
+{
+                   "type": "text",
+                   "id": "promotions-heading",
+                   "label": "Heading"
+                  },
+{
+                   "type": "richtext",
+                   "id": "promotions-paragraph",
+                   "label": "Text"
+                  }
+]
+}
+
+
+
+], 
+"presets":[
+                                {
+                                "name":"Promotions",
+                                "category":"Promotions"
+                                }
+                             ]
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}
+
+
+
+<style>
+.our-container{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.our-container-item{
+  display: flex;
+  padding: 30px;
+  flex-direction: column;
+  justify-content: flex-start !important;
+  align-items: center;
+  width: 25%;
+  text-align: center;
+}
+
+.our-promotions-image{
+  padding: 0px 5px;
+  margin-bottom: 10px;
+}
+.our-promotions-text{
+  padding: 0px 5px;
+}
+
+  .our-promotions-heading h2{
+    font-size: 13px;
+    font-weight: 700;
+  }
+
+@media(max-width: 768px){
+  .our-container-item{
+    width: 100%;
+  }
+  .our-promotions-paragraph p {
+    font-size: 10px;
+  }
+  .our-promotions-image img{
+    max-width: 40px;
+  }
+}
+
+</style>

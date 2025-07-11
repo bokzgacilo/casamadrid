@@ -1,0 +1,143 @@
+<style>
+  .discount-progress {
+    display:flex;
+    gap: 10px;
+    flex-direction: column;
+    padding: 20px;
+    border: 1px solid #eee;
+    background: #fafafa;
+    position: relative;
+  }
+
+  .progress-dynamic-message {
+    font-size: 12px;
+    color: #333;
+    text-align: center;
+    margin: 0; 
+  }
+
+  .progress-bar {
+    background:  {{ settings.non_fill_bar_color }};
+    height: 6px;
+    border-radius: 3px;
+    overflow: hidden;
+  }
+
+  .progress-fill {
+    background: {{ settings.fill_bar_color }};
+    height: 100%;
+    transition: width 0.3s ease-in-out;
+  }
+
+ .progress-steps {
+    display: flex;
+    justify-content: space-between;
+    text-align: center;
+    gap: 10px;
+    width: 100%;
+    top: 42px;
+}
+
+  .step {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: {{ settings.non_active_step_color }};
+    font-size: 12px;
+  }
+
+  .step.active {
+    color: {{ settings.active_step_color }};
+  }
+
+  .step-icon {
+   width: 26px;
+    height: 26px;
+    margin-bottom: 5px;
+    object-fit: contain;
+    background: #fff;
+    border-radius: 100px;
+  }
+</style>
+  
+  
+  <div class="discount-progress">
+  {% assign use_quantity_based = settings.use_quantity_based %}
+  {% assign item_count = cart.item_count %}
+  {% assign cart_total = cart.total_price | divided_by: 100 %}
+  {% assign message = '' %}
+  {% assign progress_percentage = 0 %}
+
+  {% if use_quantity_based %}
+    {%- assign threshold_1 = settings.qty_threshold_10 | default: 2 -%}
+    {%- assign threshold_2 = settings.qty_threshold_15 | default: 3 -%}
+    {%- assign threshold_3 = settings.qty_threshold_20 | default: 4 -%}
+    {%- assign current_value = item_count -%}
+
+    {% if current_value >= threshold_3 %}
+      {% assign message = settings.message_20_translated %}
+      {% assign progress_percentage = 100 %}
+    {% elsif current_value >= threshold_2 %}
+      {% assign message = settings.message_15_translated %}
+      {% assign progress_percentage = 66 %}
+    {% elsif current_value >= threshold_1 %}
+      {% assign message = settings.message_10_translated %}
+      {% assign progress_percentage = 33 %}
+    {% else %}
+      {% assign remaining = threshold_1 | minus: current_value %}
+      {% assign message = settings.message_default | replace: '[amount]', remaining %}
+      {% assign progress_percentage = 0 %}
+    {% endif %}
+  {% else %}
+    {%- assign threshold_1 = settings.discount_10 | default: 50 -%}
+    {%- assign threshold_2 = settings.discount_15 | default: 100 -%}
+    {%- assign threshold_3 = settings.discount_20 | default: 150 -%}
+    {%- assign current_value = cart_total -%}
+
+    {% if current_value >= threshold_3 %}
+      {% assign message = settings.message_20_translated %}
+      {% assign progress_percentage = 100 %}
+    {% elsif current_value >= threshold_2 %}
+      {% assign message = settings.message_15_translated %}
+      {% assign progress_percentage = 66 %}
+    {% elsif current_value >= threshold_1 %}
+      {% assign message = settings.message_10_translated %}
+      {% assign progress_percentage = 33 %}
+    {% else %}
+      {% assign remaining = threshold_1 | minus: current_value %}
+      {% assign message = settings.message_default | replace: '[amount]', remaining %}
+      {% assign progress_percentage = 0 %}
+    {% endif %}
+  {% endif %}
+
+  <p class="progress-dynamic-message">{{ message }}</p>
+
+  <div class="progress-bar">
+    <div class="progress-fill" style="width: {{ progress_percentage }}%;"></div>
+  </div>
+
+  <!-- <div class="progress-steps">
+    <div class="step {% if current_value >= threshold_1 %}active{% endif %}">
+      {% if settings.image_10 != blank %}
+        <img src="{{ settings.image_10 | img_url: '60x60' }}" alt="10% Discount" class="step-icon" />
+      {% endif %}
+      <span>{{ settings.label_step_10 }}</span>
+    </div>
+    <div class="step {% if current_value >= threshold_2 %}active{% endif %}">
+      {% if settings.image_15 != blank %}
+        <img src="{{ settings.image_15 | img_url: '60x60' }}" alt="15% Discount" class="step-icon" />
+      {% endif %}
+      <span>{{ settings.label_step_15 }}</span>
+    </div>
+    <div class="step {% if current_value >= threshold_3 %}active{% endif %}">
+      {% if settings.image_20 != blank %}
+        <img src="{{ settings.image_20 | img_url: '60x60' }}" alt="20% Discount" class="step-icon" />
+      {% endif %}
+      <span>{{ settings.label_step_20 }}</span>
+    </div>
+  </div> -->
+</div>
+
+
+

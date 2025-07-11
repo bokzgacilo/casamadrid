@@ -1,0 +1,69 @@
+<div class="product-subtext-blocks">
+  {% for block in section.blocks %}
+    <div class="product-subtext-block" {{ block.shopify_attributes }}>
+      {% if block.settings.subheading != blank %}
+        <h3 class="subheading">{{ block.settings.subheading }}</h3>
+      {% endif %}
+      {% if block.settings.subdescription != blank %}
+        <div class="subdescription">{{ block.settings.subdescription }}</div>
+      {% endif %}
+    </div>
+  {% endfor %}
+</div>
+
+<style>
+.product-subtext-blocks {
+  margin-top: 2rem;
+}
+.subheading {
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+.subdescription {
+  font-size: 1rem;
+  color: #666;
+}
+</style>
+
+{% schema %}
+{
+  "name": "Custom Accordion",
+  "tag": "section",
+  "settings": [],
+  "blocks": [
+    {
+      "type": "subtext",
+      "name": "Subtext Block",
+      "settings": [
+        {
+          "type": "text",
+          "id": "subheading",
+          "label": "Subheading"
+        },
+        {
+          "type": "textarea",
+          "id": "subdescription",
+          "label": "Subdescription"
+        }
+      ]
+    }
+  ],
+  "max_blocks": 5,
+  "presets": [
+    {
+      "name": "Product Subtext",
+      "category": "Product",
+      "blocks": [
+        {
+          "type": "subtext",
+          "settings": {
+            "subheading": "Product Details",
+            "subdescription": "This product is made with premium materials..."
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

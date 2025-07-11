@@ -1,0 +1,107 @@
+<div class="cstm-bf-timer-bar">
+  <div class="page-width">
+    <div class="cstm-bf-timer-bar-content">
+      <p><span class="bf-timer" id="bf-sale-timer"></span> Sidste timer af vores lukningssalg</p>
+    </div>
+  </div>
+</div>
+
+<script>
+   document.addEventListener("DOMContentLoaded", (event) => {
+    const COOKIE_NAME = "bfTimer";
+    const RESET_HOUR = 0; // Australian midnight (Sydney time)
+
+    function getAustralianMidnight() {
+        const now = new Date();
+        
+        // Create a date object for Sydney timezone using Intl.DateTimeFormat
+        const options = { timeZone: "Australia/Sydney", hour12: false };
+        const formatter = new Intl.DateTimeFormat("en-US", { ...options, hour: "numeric", minute: "numeric", second: "numeric" });
+        const [hour, minute, second] = formatter.formatToParts(now).filter(part => part.type !== "literal").map(part => part.value);
+        
+        const sydneyMidnight = new Date(now.toLocaleString("en-US", { timeZone: "Australia/Sydney" }));
+        sydneyMidnight.setHours(RESET_HOUR, 0, 0, 0);
+        
+        if (hour >= RESET_HOUR) {
+            // If it's past midnight in Sydney, calculate for the next day
+            sydneyMidnight.setDate(sydneyMidnight.getDate() + 1);
+        }
+        
+        return sydneyMidnight;
+    }
+
+    function getRemainingTime() {
+        const now = new Date();
+        const midnight = getAustralianMidnight();
+        const remaining = midnight - now; // Difference in milliseconds
+        return {
+            total: remaining,
+            hours: Math.floor((remaining / (1000 * 60 * 60)) % 24),
+            minutes: Math.floor((remaining / (1000 * 60)) % 60),
+            seconds: Math.floor((remaining / 1000) % 60)
+        };
+    }
+
+    function setCookie(name, value, expires) {
+        document.cookie = `${name}=${value}; path=/; expires=${expires.toUTCString()}`;
+    }
+
+    function getCookie(name) {
+        const cookies = document.cookie.split("; ");
+        for (let i = 0; i < cookies.length; i++) {
+            const [key, value] = cookies[i].split("=");
+            if (key === name) return value;
+        }
+        return null;
+    }
+
+    function startTimer() {
+        const timerElement = $("#bf-sale-timer");
+        const now = new Date();
+        const midnight = getAustralianMidnight();
+
+        let initialRemaining = getRemainingTime().total;
+
+        // Check if a cookie exists
+        const savedTime = getCookie(COOKIE_NAME);
+        if (savedTime) {
+            const savedRemaining = parseInt(savedTime, 10);
+            initialRemaining = Math.min(savedRemaining, initialRemaining);
+        }
+
+        // Save the initial remaining time in a cookie
+        const cookieExpiry = new Date(midnight.getTime());
+        setCookie(COOKIE_NAME, initialRemaining + now.getTime(), cookieExpiry);
+
+        function updateTimer() {
+            const remainingTime = getRemainingTime();
+            if (remainingTime.total <= 0) {
+                timerElement.text("00:00:00");
+                return;
+            }
+
+            const hours = String(remainingTime.hours).padStart(2, "0");
+            const minutes = String(remainingTime.minutes).padStart(2, "0");
+            const seconds = String(remainingTime.seconds).padStart(2, "0");
+
+            timerElement.text(`${hours}:${minutes}:${seconds}`);
+
+            // Update the cookie with the latest time left
+            const currentRemaining = remainingTime.total + new Date().getTime();
+            setCookie(COOKIE_NAME, currentRemaining, cookieExpiry);
+        }
+
+        updateTimer();
+        setInterval(updateTimer, 1000); // Update every second
+    }
+
+    startTimer();
+});
+
+</script>
+{% schema %}
+  {
+    "name": "Timer bar",
+    "settings": []
+  }
+{% endschema %}

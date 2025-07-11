@@ -1,0 +1,70 @@
+{% schema %}
+{
+  "name": "Image Carousel",
+  "tag": "section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "image_prefix",
+      "label": "Image filename prefix",
+      "default": "slide"
+    },
+    {
+      "type": "number",
+      "id": "image_count",
+      "label": "Number of images",
+      "default": 4
+    }
+  ],
+  "presets": [
+    {
+      "name": "Image Carousel",
+      "category": "Media"
+    }
+  ]
+}
+{% endschema %}
+
+<style>
+  .carousel-wrapper {
+    overflow: hidden;
+    position: relative;
+    width: 100%;
+  }
+
+  .carousel-track {
+    display: flex;
+    animation: scroll-carousel 20s linear infinite;
+  }
+
+  .carousel-track img {
+    width: auto;
+    height: 200px;
+    margin-right: 20px;
+  }
+
+  @keyframes scroll-carousel {
+    0% {
+      transform: translateX(0%);
+    }
+    100% {
+      transform: translateX(-50%);
+    }
+  }
+</style>
+
+<div class="carousel-wrapper">
+  <div class="carousel-track">
+    {% assign count = section.settings.image_count %}
+    {% assign prefix = section.settings.image_prefix %}
+    
+    {% for i in (1..count) %}
+      <img height="200" width="200" src="slide ({{ i }}).png" alt="Carousel Image {{ i }}" />
+    {% endfor %}
+
+    <!-- Duplicate for seamless scroll -->
+    {% for i in (1..count) %}
+      <img height="200" width="200" src="slide ({{ i }}).png" alt="Carousel Image {{ i }}" />
+    {% endfor %}
+  </div>
+</div>

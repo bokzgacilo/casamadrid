@@ -1,0 +1,281 @@
+<section class="section-{{ section.id }} usp__section {% if section.settings.text_center == true %}text-center{% endif %}" data-section-id="{{ section.id }}" data-aos="fade">
+  <div class="page-width container">
+    <div class="row usp__section-container OURusp__section-container">
+      {% for block in section.blocks %}
+      {% assign grid = section.blocks.size %}
+
+      {% if block.settings.link != blank %}<a href="{{ block.settings.link }}">{% endif %}
+      <div class="usp__content usp-{{ block.id }}">
+        <img height="70" width="70" class="usp__content-img" src="{{ block.settings.image | img_url:"master" }}" style="">
+        <div class="banner_text_content">
+          <h3>{{ block.settings.heading | escape }}</h3>
+          {{ block.settings.textarea }}
+        </div>
+      </div>
+      {% if block.settings.link != blank %}</a>{% endif %}
+      {% endfor %}
+    </div>
+
+    {% if section.blocks.size == 0 %}
+    {% render 'no-blocks' %}
+    {% endif %}
+
+    <style>
+      .section-{{ section.id }} {
+        {% if section.settings.section_padding == 'top' %}
+        margin-top: calc(var(--section-padding) / 2);
+        {% elsif section.settings.section_padding == 'bottom' %}
+          margin-bottom: calc(var(--section-padding) / 2);
+        {% elsif section.settings.section_padding == 'none' %}
+          margin-top: 0 !important;
+          margin-bottom: 0 !important;
+        {% elsif section.settings.section_padding == 'both' %}
+          margin-top: calc(var(--section-padding) / 2);
+          margin-bottom: calc(var(--section-padding) / 2);
+        {% endif %}
+      }
+
+      .section-{{ section.id }}.usp__section {
+        background: {{ section.settings.background }};
+        padding: {{ section.settings.vertical_spacing }}px 0 !important;
+      }
+
+      .section-{{ section.id }} .usp__section-container {
+        display: grid;
+        grid-template-columns: repeat({{ grid }}, 1fr);
+        column-gap: {{ section.settings.spacing }}px;
+        justify-items: stretch;
+      }
+
+      .section-{{ section.id }}.usp__section .usp__content h3 {
+        font-size: {{ section.settings.notification_heading_size }}px;
+        margin-bottom: 0;
+        font-weight: bold;
+        text-transform: capitalize;
+      }
+
+      .section-{{ section.id }}.usp__section .usp__content p {
+        font-size: {{ section.settings.notification_font_size }}px;
+        margin-top: 10px;
+      }
+
+      .section-{{ section.id }} .usp__content h3,
+      .section-{{ section.id }} .usp__content p,
+      .section-{{ section.id }} .usp__content a,
+      .section-{{ section.id }} .usp__content a:visited {
+        color: {{ section.settings.text_color }};
+      }
+
+      {% if section.settings.add_divider %}
+      .section-{{ section.id }} .row.usp__section-container .usp__content {
+        position: relative;
+      }
+      {% assign gap = section.settings.spacing | divided_by: 2 %}
+      .section-{{ section.id }} .row.usp__section-container .usp__content:nth-child(2n):after,
+      .section-{{ section.id }} .row.usp__section-container .usp__content:nth-child(2n):before {
+        content: "";
+        position: absolute;
+        height: 50%;
+        width: 1px;
+        background: {{ section.settings.text_color }};
+        opacity: 0.7;
+      }
+
+      .section-{{ section.id }} .row.usp__section-container .usp__content:nth-child(2n):after {
+        right: 0;
+        top: 50%;
+        transform: translate({{ gap }}px, -50%);
+      }
+
+      .section-{{ section.id }} .row.usp__section-container .usp__content:nth-child(2n):before {
+        left: 0;
+        top: 50%;
+        transform: translate(-{{ gap }}px, -50%);
+      }
+
+      .section-{{ section.id }} .row.usp__section-container .usp__content:last-child:after {
+        display: none;
+      }
+      {% endif %}
+
+      .usp__content {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+      }
+
+      @media screen and (max-width: 740px) {
+        .banner_text_content {
+    width: 70%;
+}
+        .section-{{ section.id }} .usp__section-container {
+          display: flex !important;
+          flex-direction: column !important;
+          justify-content: center !important;
+          gap: {{ section.settings.spacing }}px;
+        }
+
+        .section-{{ section.id }} .usp__content {
+          width: 100%;
+          margin-bottom: {{ section.settings.spacing }}px !important;
+        }
+
+        .section-{{ section.id }} .usp__section-container .usp__content:last-child {
+          margin-bottom: 0;
+        }
+
+        .section-{{ section.id }}.usp__section .usp__content h3 {
+          font-size: calc({{ section.settings.notification_heading_size }}px - ({{ section.settings.notification_heading_size }}px * 0.15));
+        }
+
+        .section-{{ section.id }}.usp__section .usp__content p {
+          font-size: calc({{ section.settings.notification_font_size }}px - ({{ section.settings.notification_font_size }}px * 0.15));
+        }
+      }
+
+
+@media screen and (min-width: 741px) {
+  .section-{{ section.id }} .usp__content {
+    flex-direction: column;
+    text-align: center;
+  }
+}
+
+
+
+    </style>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Text banner",
+  "max_blocks": 4,
+  "settings": [
+    {
+      "type": "range",
+      "id": "notification_heading_size",
+      "min": 13,
+      "max": 36,
+      "step": 1,
+      "unit": "px",
+      "label": "Heading size",
+      "default": 23
+    },
+    {
+      "type": "range",
+      "id": "notification_font_size",
+      "min": 13,
+      "max": 22,
+      "step": 1,
+      "unit": "px",
+      "label": "Text size",
+      "default": 14
+    },
+    {
+      "type": "range",
+      "id": "vertical_spacing",
+      "min": 0,
+      "max": 80,
+      "step": 5,
+      "unit": "px",
+      "label": "Vertical padding",
+      "default": 30
+    },
+    {
+      "type": "range",
+      "id": "spacing",
+      "min": 0,
+      "max": 20,
+      "step": 1,
+      "unit": "px",
+      "label": "Space between columns",
+      "default": 20
+    },
+    {
+      "type": "color",
+      "id": "background",
+      "label": "Background",
+      "default": "#444444"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "checkbox",
+      "id": "text_center",
+      "label": "Text align center"
+    },
+    {
+      "type": "checkbox",
+      "id": "add_divider",
+      "label": "Add divider between columns",
+      "default": true
+    },
+    {
+      "type": "select",
+      "id": "section_padding",
+      "label": "Section spacing",
+      "options": [
+        {
+          "value": "top",
+          "label": "Top"
+        },
+        {
+          "value": "bottom",
+          "label": "Bottom"
+        },
+        {
+          "value": "both",
+          "label": "Both"
+        },
+        {
+          "value": "none",
+          "label": "None"
+        }
+      ],
+      "default": "both"
+    }
+  ],
+  "blocks": [{
+    "type": "text",
+    "name": "Text",
+    "settings": [
+      {
+        "type": "image_picker",
+        "id": "image",
+        "label": "Image"
+      },
+      {
+        "id": "heading",
+        "type": "text",
+        "label": "Heading",
+        "default": "Selling point title"
+      },
+      {
+        "id": "textarea",
+        "type": "richtext",
+        "label": "Text",
+        "default": "<p>Add some featured text to highlight your selling points</p>"
+      }
+    ]
+  }],
+  "presets": [{
+    "name": "Text banner",
+    "blocks": [{
+      "type": "text"
+    },
+    {
+      "type": "text"
+    },
+    {
+      "type": "text"
+    }]
+  }],
+  "templates": ["404", "article", "blog", "cart", "collection", "list-collections", "index", "page", "product", "search"]
+}
+{% endschema %}

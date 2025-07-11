@@ -1,0 +1,524 @@
+<!doctype html>
+<html class="no-js" lang="{{ request.locale.iso_code }}" dir="{{ settings.text_direction }}">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="{{ settings.color_button }}">
+  <link rel="canonical" href="{{ canonical_url }}">
+  {%- if settings.favicon != blank -%}
+    <link rel="shortcut icon" href="{{ settings.favicon | img_url: '32x32' }}" type="image/png" />
+  {%- endif -%}
+
+  {%- render 'seo-title' -%}
+
+  {%- if page_description -%}
+  <meta name="description" content="{{ page_description | escape }}">
+  {%- endif -%}
+
+  {%- render 'social-meta-tags' -%}
+
+  {%- render 'font-face' -%}
+  {{ 'mrk.css' | asset_url | stylesheet_tag: preload: true }}
+  {%- render 'css-variables' -%}
+  <link rel="preconnect" href="https://cdn.shopify.com" crossorigin>
+  <link rel="preconnect" href="https://fonts.shopifycdn.com" crossorigin>
+  <link rel="dns-prefetch" href="https://productreviews.shopifycdn.com">
+  <link rel="dns-prefetch" href="https://ajax.googleapis.com">
+  <link rel="dns-prefetch" href="https://maps.googleapis.com">
+  <link rel="dns-prefetch" href="https://maps.gstatic.com">
+
+
+  <script>
+    document.documentElement.className = document.documentElement.className.replace('no-js', 'js');
+
+    window.theme = window.theme || {};
+    theme.routes = {
+      home: "{{ routes.root_url }}",
+      cart: "{{ routes.cart_url | append: '.js' }}",
+      cartPage: "{{ routes.cart_url }}",
+      cartAdd: "{{ routes.cart_add_url | append: '.js' }}",
+      cartChange: "{{ routes.cart_change_url | append: '.js' }}",
+      search: "{{ routes.search_url }}",
+      predictiveSearch: "{{ routes.predictive_search_url }}"
+    };
+    theme.strings = {
+      soldOut: {{ 'products.product.sold_out' | t | json }},
+      unavailable: {{ 'products.product.unavailable' | t | json }},
+      inStockLabel: {{ 'products.product.in_stock_label' | t | json }},
+      oneStockLabel: {{ 'products.product.stock_label.one' | t: count: '[count]' | json }},
+      otherStockLabel: {{ 'products.product.stock_label.other' | t: count: '[count]' | json }},
+      willNotShipUntil: {{ 'products.product.will_not_ship_until' | t: date: '[date]' | json }},
+      willBeInStockAfter: {{ 'products.product.will_be_in_stock_after' | t: date: '[date]' | json }},
+      waitingForStock: {{ 'products.product.waiting_for_stock' | t | json }},
+      savePrice: {{ 'products.general.save_html' | t: saved_amount: '[saved_amount]' | json }},
+      cartEmpty: {{ 'cart.general.empty' | t | json }},
+      cartTermsConfirmation: {{ 'cart.general.terms_confirm' | t | json }},
+      searchCollections: {{ 'general.search.collections' | t | json }},
+      searchPages: {{ 'general.search.pages' | t | json }},
+      searchArticles: {{ 'general.search.articles' | t | json }},
+      productFrom: {{ 'products.general.from_text_html' | t: price: '' | json }},
+      maxQuantity: {{ 'cart.general.max_quantity' | t: quantity: '[quantity]', title: '[title]' | json }}
+    };
+    theme.settings = {
+      cartType: {{ settings.cart_type | json }},
+      isCustomerTemplate: {% if request.page_type contains 'customers/' %}true{% else %}false{% endif %},
+      moneyFormat: {{ shop.money_format | json }},
+      saveType: {{ settings.product_save_type | json }},
+      productImageSize: {{ settings.product_grid_image_size | json }},
+      productImageCover: {{ settings.product_grid_image_fill }},
+      predictiveSearch: {{ settings.predictive_search_enabled }},
+      predictiveSearchType: {{ settings.search_type | json }},
+      predictiveSearchVendor: {{ settings.predictive_search_show_vendor | json }},
+      predictiveSearchPrice: {{ settings.predictive_search_show_price | json }},
+      quickView: {{ settings.quick_shop_enable }},
+      themeName: 'MRK',
+      themeVersion: "1.2.2"
+    };
+  </script>  
+
+  {{ content_for_header }}
+ 
+  <script src="{{ 'mrkMain.js' | asset_url | split: '?' | first }}" defer="defer"></script>
+
+  {%- if shop.enabled_currencies.size > 1 -%}
+    <link rel="stylesheet" href="{{ 'country-flags.css' | asset_url | split: '?' | first }}">
+  {%- endif -%}
+
+  <script src="{{ 'mrk.js' | asset_url }}" defer="defer"></script>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+   <script src="{{ 'custom.js' | asset_url }}" defer="defer"></script>
+
+
+  {%- if request.page_type contains 'customers/' -%}
+    <script src="{{ 'shopify_common.js' | shopify_asset_url }}" defer="defer"></script>
+  {%- endif -%}
+
+  {% if request.design_mode %}
+    <script src="https://api.google.com/design-mode.js" defer="defer"></script>
+  {% endif %}
+
+{% render 'gsf-conversion-pixels' %}
+
+  <script>
+  document.addEventListener('DOMContentLoaded', function() {
+    var currentDateSpan = document.getElementById('current-date');
+    var today = new Date();
+    
+    // Use 'nl-NL' for Dutch formatting
+    var options = { month: 'long', day: 'numeric' };
+    var formattedDate = today.toLocaleDateString('nl-NL', options);
+    
+    currentDateSpan.textContent = formattedDate;
+  });
+</script>
+
+  
+  <style>
+    {% unless template.name == 'index' %}   
+       /* .flex_header_froup {
+        display: flex;
+        flex-direction: column-reverse;
+      } */
+    {% endunless %}
+
+    @media(max-width: 767px){
+      .cart__image img{
+        height: 100px;
+      }
+      
+      .grid-product-add-to-cart{
+        font-size: 10px !important;
+      }
+    }
+    
+    button.btn.btn--full.add-to-cart {
+      letter-spacing: .03em;
+    }
+
+    .color-swatch--small, .color-swatch--small:before{
+      border-radius: 10px;
+    }
+
+    #satcb_bar {
+        display: none !important;
+    }
+
+    #shopify-section-template--23350502097238__product-recommendations .quick-product__btn{
+      display: none;
+    }
+
+    .grid-product-add-to-cart {
+      width: 100%;
+      margin-bottom: 10px;
+    }
+
+    .product-block--sales-point .icon-and-text{
+      padding-bottom: 5px;
+    }
+
+    .product-block--sales-point .icon-and-text span{
+      font-size: 14px;
+    }
+
+    .add-to-cart, .cart__checkout {
+      background: black !important;      
+    }
+
+    .add-to-cart:hover, .cart__checkout:hover {
+      background: #208964 !important;      
+    }
+
+    .grid-product__link:after {
+        z-index: -1 !important;
+    }
+
+    .header-item--split-left .site-nav .site-nav__item:nth-child(2) .site-nav__link {
+        color: red;
+    }
+
+  </style>
+
+
+  {{ 'custom.css' | asset_url | stylesheet_tag }}
+
+  <style>
+    .product-drawer {
+      position: fixed;
+      bottom: -100%;
+      left: 0;
+      right: 0;
+      background: #fff;
+      box-shadow: 0 -2px 10px rgba(0,0,0,0.2);
+      transition: bottom 0.4s ease-in-out;
+      z-index: 9999;
+      height: 80%;
+      overflow-y: auto;
+    }
+    
+    .product-drawer.open {
+      bottom: 0;
+    }
+    
+    .custom-drawer-content {
+      padding: 20px;
+      height: 100%;
+    }
+    
+    .close-drawer {
+      text-align: right;
+      font-size: 16px;
+    }
+
+    .product-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(0, 0, 0, 0.5); /* translucent dark */
+      z-index: 9998;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s ease;
+    }
+    
+    .product-overlay.active {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    #drawer-body {
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+    }
+
+    .custom-add-to-cart-confirm {
+      background-color: #000;
+      color: #fff;
+      padding: 10px;
+      margin-top: auto;
+    }
+
+    .talla-options {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 8px;
+}
+
+.talla-box {
+  border: 1px solid #ccc;
+  padding: 8px 14px;
+  background: #f7f7f7;
+  cursor: pointer;
+  border-radius: 4px;
+  transition: 0.2s;
+}
+
+.talla-box:hover {
+  border-color: #000;
+}
+
+.talla-box.active {
+  background: #000;
+  color: #fff;
+  border-color: #000;
+}
+  </style>
+
+  <script>
+    let currentDrawerProduct = null;
+    function renderOptionPickers(options) {
+  let html = '';
+
+  options.forEach((option, index) => {
+    const name = option.name;
+    const values = option.values;
+
+    if (name.toLowerCase() === 'talla') {
+      html += `<div class="option-group" data-position="${index + 1}">
+        <label>${name}</label>
+        <div class="talla-options">`;
+
+      values.forEach(value => {
+        html += `
+          <button
+            type="button"
+            class="talla-box"
+            data-value="${value}"
+            onclick="selectTalla(this)"
+          >
+            ${value}
+          </button>
+        `;
+      });
+
+      html += `</div></div>`;
+    } else {
+      // Default dropdown for other options like Color
+      html += `<label for="option-${index}">${name}</label>`;
+      html += `<select id="option-${index}" class="variant-option" data-position="${index + 1}">`;
+      values.forEach(value => {
+        html += `<option value="${value}">${value}</option>`;
+      });
+      html += `</select>`;
+    }
+  });
+
+  return html;
+}
+
+    function selectTalla(el) {
+  // Deselect all buttons
+  document.querySelectorAll('.talla-box').forEach(btn => btn.classList.remove('active'));
+  // Mark selected
+  el.classList.add('active');
+}
+
+    function findSelectedVariant(product) {
+  const selects = document.querySelectorAll('.variant-option');
+  const selectedOptions = Array.from(selects).map(select => select.value);
+
+  // Get selected Talla from active box
+  const tallaActive = document.querySelector('.talla-box.active');
+  if (!tallaActive) return null;
+
+  selectedOptions.splice(1, 0, tallaActive.dataset.value); // Insert Talla at position 2 (index 1)
+
+  return product.variants.find(v =>
+    v.options.every((opt, idx) => opt === selectedOptions[idx])
+  );
+}
+    
+   function openProductDrawer(productId) {
+     fetch(window.Shopify.routes.root + `products/${productId}.js`)
+      .then(response => response.json())
+      .then(product => {
+        console.log(product)
+        currentDrawerProduct = product;
+
+        const drawerBody = document.getElementById('drawer-body');
+
+        const pickersHTML = renderOptionPickers(product.options);
+  
+        drawerBody.innerHTML = `
+          <button class="close-drawer" onclick="closeProductDrawer()">Close</button>
+          <img src="${product.images[0]}" alt="${product.title}" />
+          <h2>${product.title}</h2>
+  
+          ${pickersHTML}
+  
+          <button class='custom-add-to-cart-confirm' onclick="confirmAddToCart()">Add to Cart</button>
+        `;
+  
+        document.querySelector('.product-drawer').classList.add('open');
+        document.getElementById('product-overlay').classList.add('active');
+      });
+  }
+    
+    function closeProductDrawer() {
+  currentDrawerProduct = null;
+  document.querySelector('.product-drawer').classList.remove('open');
+  document.getElementById('product-overlay').classList.remove('active');
+}
+
+   function confirmAddToCart() {
+  const product = currentDrawerProduct;
+  const variant = findSelectedVariant(product);
+
+  if (!variant || !variant.available) {
+    alert('This variant is not available.');
+    return;
+  }
+
+  fetch('/cart/add.js', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ id: variant.id, quantity: 1 })
+  })
+    .then(() => {
+      closeProductDrawer();
+    })
+    .catch(error => {
+      console.error('Add to cart error:', error);
+    });
+}
+
+    </script>
+</head>
+
+<body style="max-width: 100% !important;" class="template-{{ template | replace: '.', ' ' | truncatewords: 1, '' | handle }}{% if request.path == '/challenge' %} template-challange{% endif %}" data-center-text="{{ settings.type_body_align_text }}" data-button_style="{{ settings.button_style }}" data-type_header_capitalize="{{ settings.type_header_capitalize }}" data-type_headers_align_text="{{ settings.type_headers_align_text }}" data-type_product_capitalize="{{ settings.type_product_capitalize }}" data-swatch_style="{{ settings.swatch_style }}" {% if settings.disable_animations %}data-disable-animations="true"{% endif %}>
+  <!-- Overlay -->
+  <div id="product-overlay" class="product-overlay" onclick="closeProductDrawer()"></div>
+  <!-- Drawer -->
+  <div id="product-drawer" class="product-drawer">
+    <div class="custom-drawer-content">
+      <div id="drawer-body">
+         <div id="custom-product-detail">
+           
+         </div>
+      </div>
+    </div>
+  </div>
+  <a class="in-page-link visually-hidden skip-link" href="#MainContent">{{ 'general.accessibility.skip_to_content' | t }}</a>
+
+  <div id="PageContainer" class="page-container">
+
+      <div class="flex_header_froup">
+    {%- sections 'header-group' -%}
+  </div>
+    {%- sections 'popup-group' -%}
+    {%- section 'timer-bar' -%}
+    {% comment %}
+    {% unless template.name == 'index' %}
+    {% section 'announcement' %}
+      {% endunless %}
+{% endcomment %}
+      <main class="main-content" id="MainContent">
+        {{ content_for_layout }}
+      </main>
+
+    {%- sections 'footer-group' -%}
+
+  </div>
+
+  {%- liquid
+    render 'video-modal'
+    render 'photoswipe-template'
+    render 'tool-tip'
+  -%}
+
+  {% comment %} Image markup used when building product grid item via JS {% endcomment %}
+  <template id="naturalImageMarkup">
+    <div class="image-wrap" style="height: 0;">
+      <image-element data-aos="image-fade-in">
+        <img class="grid-product__image" width height src srcset loading="lazy" alt>
+      </image-element>
+    </div>
+  </template>
+  <template id="fixedRatioImageMarkup">
+    <div class="grid__image-ratio">
+      <image-element data-aos="image-fade-in">
+        <img width height src srcset loading="lazy" alt>
+      </image-element>
+    </div>
+  </template>
+  
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+
+        <script>
+      var timer2 = "5:01";
+var interval = setInterval(function() {
+
+
+  var timer = timer2.split(':');
+  //by parsing integer, I avoid all extra string processing
+  var minutes = parseInt(timer[0], 10);
+  var seconds = parseInt(timer[1], 10);
+  --seconds;
+  minutes = (seconds < 0) ? --minutes : minutes;
+  seconds = (seconds < 0) ? 59 : seconds;
+  seconds = (seconds < 10) ? '0' + seconds : seconds;
+  //minutes = (minutes < 10) ?  minutes : minutes;
+  $('.countdown').html(minutes + ':' + seconds);
+  if (minutes < 0) clearInterval(interval);
+  //check if both minutes and seconds are 0
+  if ((seconds <= 0) && (minutes <= 0)) clearInterval(interval);
+  timer2 = minutes + ':' + seconds;
+}, 1000);
+      
+    </script>
+
+
+ 
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css"/>
+
+
+
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+    <script>
+$('.grid.grid--uniform.grid--flush-bottom').slick({
+  dots: true,
+  infinite: false,
+  speed: 300,
+  slidesToShow: 3,
+  slidesToScroll: 1,
+  responsive: [
+    {
+      breakpoint: 1024,
+      settings: {
+        slidesToShow: 3,
+        slidesToScroll: 3,
+        infinite: true,
+        dots: true
+      }
+    },
+    {
+      breakpoint: 600,
+      settings: {
+        slidesToShow: 2,
+        dots: true,
+        slidesToScroll: 2
+      }
+    },
+    {
+      breakpoint: 480,
+      settings: {
+        slidesToShow: 1,
+        dots: true,
+        slidesToScroll: 1
+      }
+    }
+  ]
+});
+    </script>
+
+
+</body>
+</html>

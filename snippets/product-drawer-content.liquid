@@ -1,0 +1,11 @@
+<!-- snippets/product-drawer-content.liquid -->
+<div class="product-drawer-details" data-product-id="{{ product.id }}">
+  <img src="{{ product.featured_image | image_url: width: 400 }}" alt="{{ product.title }}">
+  <h2>{{ product.title }}</h2>
+
+  <select id="variant-select-{{ product.id }}">
+    {% for variant in product.variants %}
+      <option value="{{ variant.id }}">{{ variant.title }} - {{ variant.price | money }}</option>
+    {% endfor %}
+  </select>
+</div>

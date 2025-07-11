@@ -1,0 +1,125 @@
+{% schema %}
+{
+  "name": "Collection Carousel",
+  "tag": "section",
+  "settings": [
+    {
+      "type": "collection",
+      "id": "collection",
+      "label": "Collection"
+    },
+    {
+      "type": "number",
+      "id": "max_products",
+      "label": "Maximum products to show",
+      "default": 10
+    }
+  ],
+  "presets": [
+    {
+      "name": "Collection Carousel"
+    }
+  ]
+}
+{% endschema %}
+
+{% assign collection = collections[section.settings.collection] %}
+{% if collection and collection.products.size > 0 %}
+<div class="collection-carousel-wrapper">
+  <h2 class="carousel-title">{{ collection.title }}</h2>
+
+  <button class="carousel-btn left">‹</button>
+
+  <div class="carousel-track">
+    {% for product in collection.products limit: section.settings.max_products %}
+      <div class="carousel-item">
+        <a href="{{ product.url }}">
+          <img src="{{ product.featured_image | image_url: width: 400 }}" alt="{{ product.title }}">
+          <p>{{ product.title }}</p>
+        </a>
+      </div>
+    {% endfor %}
+  </div>
+
+  <button class="carousel-btn right">›</button>
+</div>
+{% endif %}
+
+<style>
+.collection-carousel-wrapper {
+  position: relative;
+  overflow: hidden;
+  padding: 1rem 0;
+}
+
+.carousel-title {
+  margin: 0 2rem 1rem;
+  font-size: 1.25rem;
+  font-weight: 600;
+}
+
+.carousel-track {
+  display: flex;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  gap: 1rem;
+  padding: 0 2rem;
+  scrollbar-width: none; /* Firefox */
+}
+
+.carousel-track::-webkit-scrollbar {
+  display: none; /* Chrome, Safari */
+}
+
+.carousel-item {
+  flex: 0 0 25%; /* Show 4 at a time on desktop */
+  text-align: center;
+}
+
+@media (max-width: 768px) {
+  .carousel-item {
+    flex: 0 0 100%; /* Show 1 on mobile */
+  }
+}
+
+.carousel-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: black;
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  z-index: 2;
+  font-size: 1.5rem;
+  opacity: 0.7;
+}
+
+.carousel-btn.left { left: 0; }
+.carousel-btn.right { right: 0; }
+</style>
+
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+  const wrapper = document.querySelector('.collection-carousel-wrapper');
+  if (!wrapper) return;
+
+  const carousel = wrapper.querySelector('.carousel-track');
+  const leftBtn = wrapper.querySelector('.carousel-btn.left');
+  const rightBtn = wrapper.querySelector('.carousel-btn.right');
+
+  const scrollByItem = () => {
+    const item = carousel.querySelector('.carousel-item');
+    return item ? item.offsetWidth + 16 : 300; // 16px gap
+  };
+
+  leftBtn.addEventListener('click', () => {
+    carousel.scrollBy({ left: -scrollByItem(), behavior: 'smooth' });
+  });
+
+  rightBtn.addEventListener('click', () => {
+    carousel.scrollBy({ left: scrollByItem(), behavior: 'smooth' });
+  });
+});
+</script>

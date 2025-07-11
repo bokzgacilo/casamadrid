@@ -1,0 +1,149 @@
+{% schema %}
+{
+  "name": "Social Proofs",
+  "tag": "section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "image_prefix",
+      "label": "Image filename prefix",
+      "default": "slide"
+    },
+    {
+      "type": "number",
+      "id": "image_count",
+      "label": "Number of images",
+      "default": 16
+    },
+    {
+      "type": "number",
+      "id": "speed",
+      "label": "Scroll speed (pixels per second)",
+      "default": 60
+    }
+  ],
+  "presets": [
+    {
+      "name": "Social Proofs",
+      "category": "Media"
+    }
+  ]
+}
+{% endschema %}
+
+<style>
+  .marquee-container {
+    width: 100%;
+    overflow: hidden;
+    box-sizing: border-box;
+    background: #f9f9f9;
+    padding: 20px 0;
+  }
+
+  .marquee {
+    display: flex;
+    width: fit-content;
+    animation: scroll 5s linear infinite;
+  }
+
+  .marquee img {
+    margin-right: 20px;
+    object-fit: cover;
+    border-radius: 2px;
+  }
+
+  @keyframes scroll {
+    0%   { transform: translateX(0); }
+    100% { transform: translateX(-100%); }
+  }
+
+  .marquee-heading {
+    text-align: center;
+    font-size: 24px;
+    margin: 30px 0 10px;
+    font-weight: bold;
+  }
+  
+  .autoplay-carousel-wrapper {
+    overflow: hidden;
+    width: 100%;
+    padding: 20px 0;
+    background: #f9f9f9;
+    position: relative;
+  }
+
+  .autoplay-carousel-track {
+    display: flex;
+    gap: 20px;
+    will-change: transform;
+    white-space: nowrap;
+  }
+
+  .autoplay-carousel-track img {
+    height: 250px;
+    width: 250px;
+    object-fit: cover;
+    flex-shrink: 0;
+  }
+
+  .carousel-heading {
+    text-align: center;
+    font-size: 24px;
+    margin-bottom: 20px;
+    font-weight: bold;
+  }
+
+  .autoplay-carousel-track-container {
+    display: flex;
+    gap: 20px;
+    will-change: transform;
+  }
+
+  #social-proofss {
+    padding: 1rem 40px;
+    margin: 4rem 0;
+  }
+</style>
+
+
+<div class="autoplay-carousel-wrapper" id="social-proofss">
+  <h1 style="text-align:center; margin: 2rem 0;">
+    ASÍ NOS ELIGEN (Y VUELVEN) 
+Estos clientes ya están disfrutando de sus compras en Casa de Moda Madrid
+  </h1>
+  
+  <div class="autoplay-carousel-track-container" id="track-container-{{ section.id }}">
+    <div class="autoplay-carousel-track">
+      {% assign count = 8 %}
+      {% for i in (1..count) %}
+        <img height="250" width="250" src="{{ 'social-proofss_' | append: i | append: '.png' | file_url }}" alt="Proof {{ i }}">
+      {% endfor %}
+    </div>
+  </div>
+</div>
+
+<script>
+  (function() {
+  const container = document.getElementById("track-container-{{ section.id }}");
+  const track = container.querySelector(".autoplay-carousel-track");
+  const speed = 60; // You can use a setting if needed
+
+  const clone = track.cloneNode(true);
+  container.appendChild(clone);
+
+  let start = null;
+  const totalWidth = track.scrollWidth;
+
+  function animate(timestamp) {
+    if (!start) start = timestamp;
+    const elapsed = timestamp - start;
+    const distance = (elapsed / 1000) * speed;
+    const offset = distance % totalWidth;
+
+    container.style.transform = `translateX(-${offset}px)`;
+    requestAnimationFrame(animate);
+  }
+
+  requestAnimationFrame(animate);
+})();
+</script>

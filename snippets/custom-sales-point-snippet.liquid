@@ -1,0 +1,45 @@
+{{ 'kopstorm_combine.css' | asset_url | stylesheet_tag }}
+<div id="custom-sales-point-snippet">
+  <style>
+    #custom-sales-point-snippet {
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+    }
+
+    .custom-sales-point {
+      display: flex;
+      flex-direction: row;
+      margin-bottom: 5px;
+    }
+
+    .custom-sales-point > img {
+     margin-right: 10px;
+      border-radius: 50px;
+    }
+
+    .sales-points, .sales-point {
+      margin: 0 !important;
+    }
+  </style>
+  <div class="custom-sales-point">
+    <img width="25" height="25" src="https://play-lh.googleusercontent.com/_xFrGYZ0kdhazbDzNgeIWCGq1mR1-hyZRVHFVpbxLpHT-NReA0gcStwBg59oyml9hnk">
+    <span>Envío gratuito en toda España</span>
+  </div>
+  <div class="custom-sales-point">
+    <img width="25" height="25" src="https://cdn.shopify.com/s/files/1/0756/6956/9865/files/Ontwerp_zonder_titel_43.png?v=1708607723">
+    <span>Garantía de reembolso de 30 días</span>
+  </div>
+  <div class="custom-sales-point">
+    <img width="25" height="25" src="https://cdn.shopify.com/s/files/1/0965/0634/7858/files/Registro_mercantil.png?v=1751024396">
+    <span>Marca familiar española reconocida</span>
+  </div>
+  <ul style="margin: 0;">
+    <li class="custom-sales-point sales-point">
+      <span class="icon-and-text">
+        <span class="icon icon--inventory"></span>
+        <span>En stock y listo para enviar</span>
+      </span>
+    </li>
+  </ul>
+</div>

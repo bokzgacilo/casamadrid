@@ -1,0 +1,134 @@
+{% schema %}
+{
+  "name": "Money Back Guarantee",
+  "settings": [
+    {
+      "type": "text",
+      "id": "percentage",
+      "label": "Percentage Display",
+      "default": "77 %",
+      "info": "e.g., 77 %"
+    },
+    {
+      "type": "text",
+      "id": "headline",
+      "label": "Guarantee Headline",
+      "default": "GELD TERUG GARANTIE!"
+    },
+    {
+      "type": "richtext",
+      "id": "description",
+      "label": "Guarantee Description",
+      "default": "<p>Bij Giraffi is klanttevredenheid onze topprioriteit. Als je niet helemaal tevreden bent met je aankoop, bieden we een probleemloze 14-dagen geld-terug garantie.</p>"
+    },
+    {
+      "type": "header",
+      "content": "Scrolling Marquee"
+    },
+    {
+      "type": "text",
+      "id": "marquee_items",
+      "label": "Marquee Items (comma-separated)",
+      "default": "KLEED JE MET KLASSE, LUXE VOOR ELKE DAG, A - LEGACY IN THE MAKING, KLEED JE ALS EEN GENTLEMAN, KLEED JE MET KLASSE"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Money Back Guarantee"
+    }
+  ]
+}
+{% endschema %}
+
+<style>
+  .moneyback-section {
+    background-color: #000;
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+  }
+
+
+  .moneyback-details {
+    text-align: center;
+    padding: 3rem 1rem 2rem 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  /* Custom CSS for marquee effect */
+  .marquee-container {
+    background-color: #000;
+    color: #fff;
+    overflow: hidden;
+    white-space: nowrap;
+    width: 100%;
+  }
+
+  .marquee-content {
+    display: inline-block;
+    animation: marquee 30s linear infinite; /* Adjust duration for speed */
+    padding-left: 100%; /* Start off-screen */
+  }
+
+  .marquee-content > span {
+    font-size: 24px;
+  }
+
+  .marquee-item:not(:last-child)::after {
+    content: ' \2022 '; /* Unicode for bullet point */
+    margin: 0 1rem; /* Space around bullet */
+  }
+
+  @keyframes marquee {
+    0% { transform: translateX(0%); }
+    100% { transform: translateX(-100%); }
+  }
+
+  .moneyback-percentage {
+    color: #fff !important;
+    font-size: 54px;
+  }
+
+  .moneyback-headline {
+    color: #fff !important;
+    font-size: 36px;
+  }
+</style>
+
+<section class="moneyback-section">
+  <div class="moneyback-details">
+    <!-- Percentage Display -->
+    {% if section.settings.percentage != blank %}
+      <h1 class="moneyback-percentage">{{ section.settings.percentage }}</h1>
+    {% endif %}
+
+    <!-- Headline -->
+    {% if section.settings.headline != blank %}
+      <h2 style="width: 50%;" class="moneyback-headline">{{ section.settings.headline }}</h2>
+    {% endif %}
+
+    <!-- Description -->
+    {% if section.settings.description != blank %}
+      <div style="width: 30%; text-align: center;">
+        {{ section.settings.description }}
+      </div>
+    {% endif %}
+  </div>
+
+  <!-- Scrolling Marquee -->
+  {% assign marquee_items_array = section.settings.marquee_items | split: ',' | compact %}
+  {% if marquee_items_array.size > 0 %}
+    <div class="marquee-container">
+      <div class="marquee-content">
+        {% for item in marquee_items_array %}
+          <span class="marquee-item">{{ item | strip }}</span>
+        {% endfor %}
+        {% comment %} Duplicate items to ensure continuous scroll without gap {% endcomment %}
+        {% for item in marquee_items_array %}
+          <span class="marquee-item">{{ item | strip }}</span>
+        {% endfor %}
+      </div>
+    </div>
+  {% endif %}
+</section>

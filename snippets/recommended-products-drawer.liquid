@@ -1,0 +1,188 @@
+{% assign upsell_collection = collections[settings.upsell_collection] %}
+
+
+<!-- Upsell Section -->
+<div class="upsell-products">
+  <h3 class="upsell-heading">{{ 'También te puede gustar' }}</h3>
+
+  {% if upsell_collection.products.size > 0 %}
+    <div class="upsell-slider">
+      {% for product in upsell_collection.products limit: 10 %}
+        <div class="upsell-item">
+          <img
+            src="{{ product.featured_image | img_url: '300x' }}"
+            alt="{{ product.title }}"
+            class="upsell-image"
+            loading="lazy"
+          >
+          <div class="upsell-info">
+            <div class="upsell-title">{{ product.title }}</div>
+            <div class="upsell-price">{{ product.price | money }}</div>
+            <a class="btn add-upsell-btn" data-variant-id="{{ product.variants.first.id }}">
+              {{ 'Agregar al carrito' }}
+            </a>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+  {% endif %}
+</div>
+
+<style>
+  .upsell-products {
+    padding: 20px;
+    padding-bottom:0;
+    border-top: 1px solid #e5e5e5;
+  }
+
+  .upsell-heading {
+    font-size: 18px;
+    margin-bottom: 10px;
+  }
+
+  .upsell-slider {
+    display: flex;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    gap: 10px; /* No gap needed since 1 item per view */
+  }
+
+  .upsell-item {
+    flex: 0 0 50%;
+    display: flex;
+    flex-direction: column !important;
+    align-items: center;
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 5px;
+    scroll-snap-align: start;
+    text-align: center;
+    box-sizing: border-box;
+    flex-direction: row;
+  }
+
+  .upsell-image {
+    width: 95px;
+    height: auto;
+    object-fit: contain;
+    margin-bottom: 0px;
+  }
+
+  .upsell-info {
+    width: 100%;
+  }
+a.reviews_stars.js-no-transition {
+    display: none;
+}
+  .upsell-title {
+    font-size: 12px;
+    margin-top: 6px;
+    min-height: 40px;
+    display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  }
+.cart__item-row.text-center {
+    display: none;
+}
+  .js-drawer-open .appear-animation {
+    padding-bottom: 0 !important;
+}
+  .upsell-price {
+    font-size: 14px;
+    font-weight: bold;
+    margin: 6px 0;
+  }
+
+
+.add-upsell-btn {
+    background-color: #000;
+    color: #fff;
+    padding: 6px 9px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 8px;
+}
+  .add-upsell-btn:hover {
+    background-color: #333;
+  }
+
+  /* Optional: Hide scrollbar for cleaner look */
+  .upsell-slider::-webkit-scrollbar {
+    display: none;
+  }
+
+  .upsell-slider {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+
+@media only screen and (max-width: 720px) {
+  .upsell-item {
+    flex-direction: column !important;
+  }
+}
+
+@media only screen and (min-width: 720px) {
+  .upsell-image {
+    width: 90px;
+  }
+  a.btn.add-upsell-btn {
+    font-size: 12px;
+}
+}
+ 
+</style>
+
+
+<!-- JavaScript -->
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    document.querySelectorAll('.add-upsell-btn').forEach(button => {
+      button.addEventListener('click', function () {
+        const variantId = this.getAttribute('data-variant-id');
+
+        fetch('/cart/add.js', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'Accept': 'application/json'
+          },
+          body: JSON.stringify({
+            items: [{
+              id: parseInt(variantId),
+              quantity: 1
+            }]
+          })
+        })
+        .then(response => response.json())
+        .then(data => {
+          // Refresh cart drawer section
+          fetch(window.location.pathname + '?sections=cart-drawer')
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const doc = parser.parseFromString(html, 'text/html');
+              const newCartDrawer = doc.querySelector('[data-id="cart-drawer"]');
+              if (newCartDrawer) {
+                document.querySelector('[data-id="cart-drawer"]').innerHTML = newCartDrawer.innerHTML;
+              }
+
+              window.location.replace("/checkout");
+            });
+        })
+        .catch(err => {
+          console.error('Error adding to cart:', err);
+        });
+      });
+    });
+  });
+</script>
+
+
+

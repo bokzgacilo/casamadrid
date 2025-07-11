@@ -1,0 +1,311 @@
+<style>
+  .cart-protection__container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 10px;
+    padding-left: 25px;
+    padding-right: var(--drawer-gutter);
+  }
+label.cart-protection__toggle-label {
+    margin-bottom: 5px;
+}
+  .cart-protection__content {
+ display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 4px;
+  }
+
+  .cart-protection__logo-group {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .cart-protection__logo {
+    width: 50px;
+    height: auto;
+  }
+
+  .cart-protection__info-btn {
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+  }
+
+  .cart-protection__info-icon {
+    width: 12px;
+    height: 12px;
+  }
+
+  .cart-protection__description {
+    font-size: 10px;
+    line-height: 1.3;
+    color: var(--colorDrawerText);
+  }
+
+  .cart-protection__toggle-group {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .cart-protection__price {
+    font-size: 12px;
+    font-weight: 500;
+    color: #000;
+  }
+
+  .cart-protection__toggle {
+    position: relative;
+    width: 35px;
+  }
+
+  .cart-protection__toggle-input {
+    position: absolute;
+    opacity: 0;
+    width: 0;
+    height: 0;
+  }
+
+  .cart-protection__toggle-label {
+    display: block;
+    position: relative;
+    width: 35px;
+    height: 20px;
+    border: 1px solid #d6d6d6;
+    border-radius: 36px;
+    background: #e4e8e8;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: rgba(255, 255, 255, 0.16) 0 1px 4px;
+  }
+
+  .cart-protection__toggle-label.checked {
+    background: #000;
+    border-color: #000;
+  }
+
+  .cart-protection__toggle-label.disabled {
+    pointer-events: none;
+    opacity: 0.6;
+  }
+
+  .cart-protection__toggle-on,
+  .cart-protection__toggle-off {
+    position: absolute;
+    top: 50%;
+    left: 25%;
+    width: 16px;
+    height: 16px;
+    transform: translateY(-50%) translateX(-50%);
+    transition: all 0.3s ease;
+  }
+
+  .cart-protection__toggle-label.checked .cart-protection__toggle-on {
+    left: 75%;
+    opacity: 1;
+    z-index:1;
+  }
+
+  .cart-protection__toggle-label.checked::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 75%;
+    width: 16px;
+    height: 16px;
+    background: #fff;
+    border-radius: 50%;
+    transform: translateY(-50%) translateX(-50%);
+    animation: toggler-pulse 0.3s ease;
+  }
+
+  .cart-protection__toggle-label:not(.checked) .cart-protection__toggle-on {
+    opacity: 0;
+    width: 0;
+    height: 0;
+  }
+
+  .cart-protection__toggle-label.checked .cart-protection__toggle-off {
+    opacity: 0;
+    width: 0;
+    height: 0;
+  }
+
+  .cart-protection__toggle-line,
+  .cart-protection__toggle-check {
+    stroke: #000;
+    stroke-width: 7px;
+    stroke-linecap: round;
+    stroke-miterlimit: 10;
+    fill: none;
+  }
+
+  @keyframes toggler-pulse {
+    0%, 100% {
+      transform: translateY(-50%) translateX(-50%) scale(1);
+    }
+    50% {
+      transform: translateY(-50%) translateX(-50%) scale(1.1);
+    }
+  }
+</style>
+
+<div class="cart-protection__container">
+  <div class="cart-protection__content">
+    <div class="cart-protection__logo-group">
+      <img class="cart-protection__logo" width="50px" height="50px" alt="Order Protection Logo" src="{{ settings.shipping_protection_product.featured_image | img_url:'master' }}" alt="Shipping Protection">
+    </div>
+    <div class="cart-protection__description">{{ settings.shipping_protection_description_translated }}</div>
+  </div>
+
+  <div class="cart-protection__toggle-group">
+    <span class="cart-protection__price" id="op-price">{{  settings.shipping_protection_product.selected_or_first_available_variant.price | money }}</span>
+    <div class="cart-protection__toggle">
+      <input class="cart-protection__toggle-input" id="protection-toggle" type="checkbox"
+        {% for item in cart.items %}
+          {% if item.variant_id == settings.shipping_protection_product.selected_or_first_available_variant.id %}
+            checked
+          {% endif %}
+        {% endfor %}
+        data-protection-price="{{  settings.shipping_protection_product.selected_or_first_available_variant.price | money }}"
+      >
+      <label class="cart-protection__toggle-label" for="protection-toggle">
+        <svg class="cart-protection__toggle-on" viewBox="0 0 130.2 130.2">
+          <polyline class="cart-protection__toggle-check" points="100.2,40.2 51.5,88.8 29.8,67.5"></polyline>
+        </svg>
+        <svg class="cart-protection__toggle-off" viewBox="0 0 130.2 130.2">
+          <line class="cart-protection__toggle-line" x1="34.4" y1="34.4" x2="95.8" y2="95.8" />
+          <line class="cart-protection__toggle-line" x1="95.8" y1="34.4" x2="34.4" y2="95.8" />
+        </svg>
+      </label>
+    </div>
+  </div>
+</div>
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    const PROTECTION_VARIANT_ID = {{ settings.shipping_protection_product.selected_or_first_available_variant.id }};
+    const protectionToggle = document.getElementById('protection-toggle');
+    const toggleLabel = document.querySelector('.cart-protection__toggle-label');
+
+    if (!protectionToggle || !toggleLabel) return;
+
+    let isProcessing = false;
+
+    // On load, sync toggle state
+    checkCartAndSetToggle();
+
+    // Handle toggle interaction
+    protectionToggle.addEventListener('change', async function () {
+      if (isProcessing) return;
+      isProcessing = true;
+      toggleLabel.classList.add('disabled');
+      const checked = this.checked;
+
+      try {
+        if (checked) {
+          await addProtectionToCart();
+        } else {
+          await removeProtectionFromCart();
+        }
+        updateToggleVisuals(checked);
+      } catch (err) {
+        console.error('Protection toggle error:', err);
+        protectionToggle.checked = !checked;
+        updateToggleVisuals(!checked);
+      } finally {
+        isProcessing = false;
+        toggleLabel.classList.remove('disabled');
+      }
+    });
+
+    // Intercept add-to-cart and auto-add protection if it's the first item
+    interceptCartAdd();
+
+    // --- Helper functions ---
+
+    async function fetchCart() {
+      const res = await fetch('/cart.js');
+      if (!res.ok) throw new Error('Cart fetch failed');
+      return res.json();
+    }
+
+    async function checkCartAndSetToggle() {
+      try {
+        const cart = await fetchCart();
+        const hasProtection = cart.items.some(item => item.variant_id === PROTECTION_VARIANT_ID);
+        protectionToggle.checked = hasProtection;
+        updateToggleVisuals(hasProtection);
+      } catch (err) {
+        console.error('Initial cart check failed:', err);
+      }
+    }
+
+    function updateToggleVisuals(checked) {
+      toggleLabel.classList.toggle('checked', checked);
+    }
+
+    async function addProtectionToCart() {
+      const res = await fetch('/cart/add.js', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ id: PROTECTION_VARIANT_ID, quantity: 1 })
+      });
+      if (!res.ok) throw new Error('Failed to add protection');
+      return res.json();
+    }
+
+    async function removeProtectionFromCart() {
+      const cart = await fetchCart();
+      const protectionItem = cart.items.find(item => item.variant_id === PROTECTION_VARIANT_ID);
+      if (protectionItem) {
+        const res = await fetch('/cart/change.js', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ id: protectionItem.key, quantity: 0 })
+        });
+        if (!res.ok) throw new Error('Failed to remove protection');
+        return res.json();
+      }
+    }
+
+    function interceptCartAdd() {
+      document.addEventListener('submit', async function (e) {
+        const form = e.target;
+        if (!form.matches('form[action^="/cart/add"]')) return;
+
+        e.preventDefault();
+
+        const formData = new FormData(form);
+        const productId = formData.get('id');
+
+        try {
+          // Add the product first
+          await fetch('/cart/add.js', {
+            method: 'POST',
+            body: formData
+          });
+
+          // Fetch the updated cart
+          const cart = await fetchCart();
+          const hasProtection = cart.items.some(item => item.variant_id === PROTECTION_VARIANT_ID);
+          const hasOtherProducts = cart.items.some(item => item.variant_id !== PROTECTION_VARIANT_ID);
+
+          if (!hasProtection && hasOtherProducts && cart.items.length === 1) {
+            await addProtectionToCart();
+            protectionToggle.checked = true;
+            updateToggleVisuals(true);
+          }
+
+          // Optionally refresh cart UI here
+          document.dispatchEvent(new CustomEvent('cart:refresh', { detail: { openCartDrawer: true } }));
+        } catch (err) {
+          console.error('Error during cart add interception:', err);
+        }
+      });
+    }
+  });
+</script>

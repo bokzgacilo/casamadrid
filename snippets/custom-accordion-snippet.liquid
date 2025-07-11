@@ -1,0 +1,23 @@
+<div class="product-subtext-block">
+  {% if subheading != blank %}
+    <h3 class="subheading">{{ subheading }}</h3>
+  {% endif %}
+
+  {% if subdescription != blank %}
+    <div class="subdescription">{{ subdescription }}</div>
+  {% endif %}
+
+  <p>TEST</p>
+</div>
+
+<style>
+  .subheading {
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+  }
+  .subdescription {
+    font-size: 1rem;
+    color: #666;
+  }
+</style>

@@ -1,0 +1,168 @@
+<div class="responsive-grid">
+  <div class="page-width">
+    {%- if section.settings.title != blank -%}
+      <div class="section-header text-{{ section.settings.align_text }}">
+        <h2>{{ section.settings.title }}</h2>
+      </div>
+    {%- endif -%}
+
+    <div class="grid grid--uniform grid--responsive">
+      {%- for block in section.blocks -%}
+        <div class="grid__item text-{{ section.settings.align_text }}" {{ block.shopify_attributes }}>
+          {%- if block.settings.enable_image and block.settings.image != blank -%}
+            <div class="image-container" style="max-width: {{ block.settings.image_width }}px; margin: 0 auto;">
+              <img src="{{ block.settings.image | img_url: 'master' }}" alt="{{ block.settings.image.alt | escape }}" class="block-image" />
+            </div>
+          {%- endif -%}
+
+          {%- if block.settings.title != blank -%}
+            <h3 class="block-title">{{ block.settings.title }}</h3>
+          {%- endif -%}
+
+          {%- if block.settings.text != blank -%}
+            <div class="block-text rte-setting">{{ block.settings.text }}</div>
+          {%- endif -%}
+
+          {%- if block.settings.button_label != blank -%}
+            <a href="{{ block.settings.button_link }}" class="btn btn--secondary btn--small">
+              {{ block.settings.button_label }}
+            </a>
+          {%- endif -%}
+        </div>
+      {%- endfor -%}
+    </div>
+  </div>
+</div>
+
+<style>
+  .responsive-grid .grid {
+    display: grid;
+    gap: 20px;
+  }
+
+  .responsive-grid .grid__item {
+    text-align: inherit;
+  }
+
+  .responsive-grid .image-container {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+
+  .responsive-grid .block-image {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+  }
+
+  .responsive-grid .block-title {
+    font-size: 16px;
+    margin: 10px 0;
+  }
+
+  .responsive-grid .block-text {
+    font-size: 18px;
+    color: #666;
+  }
+
+  @media (min-width: 768px) {
+    .responsive-grid .grid {
+      grid-template-columns: repeat(2, 1fr); /* 2 columns on desktop */
+      grid-template-rows: repeat(2, auto); /* 2 rows on desktop */
+    }
+  }
+
+  @media (max-width: 767px) {
+    .responsive-grid .grid {
+      grid-template-columns: repeat(1, 1fr); /* 1 column on mobile */
+    }
+  }
+</style>
+
+{% schema %}
+{
+  "name": "Responsive Grid Layout",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Section Title",
+      "default": "Your Section Title"
+    },
+    {
+      "type": "select",
+      "id": "align_text",
+      "label": "Text Alignment",
+      "default": "center",
+      "options": [
+        { "value": "left", "label": "Left" },
+        { "value": "center", "label": "Center" },
+        { "value": "right", "label": "Right" }
+      ]
+    }
+  ],
+  "blocks": [
+    {
+      "type": "text_block",
+      "name": "Grid Block",
+      "settings": [
+        {
+          "type": "checkbox",
+          "id": "enable_image",
+          "label": "Enable Image",
+          "default": true
+        },
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Block Image"
+        },
+        {
+          "type": "range",
+          "id": "image_width",
+          "label": "Image Max Width (px)",
+          "default": 650,
+          "min": 60,
+          "max": 650,
+          "step": 10
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Block Title",
+          "default": "Your Block Title"
+        },
+        {
+          "type": "richtext",
+          "id": "text",
+          "label": "Block Text",
+          "default": "<p>Block description goes here.</p>"
+        },
+        {
+          "type": "text",
+          "id": "button_label",
+          "label": "Button Label",
+          "default": "Learn More"
+        },
+        {
+          "type": "url",
+          "id": "button_link",
+          "label": "Button Link"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Responsive Grid Layout",
+      "blocks": [
+        { "type": "text_block" },
+        { "type": "text_block" },
+        { "type": "text_block" },
+        { "type": "text_block" }
+      ]
+    }
+  ]
+}
+{% endschema %}
