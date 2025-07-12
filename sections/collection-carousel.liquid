@@ -25,11 +25,9 @@
 
 {% assign collection = collections[section.settings.collection] %}
 {% if collection and collection.products.size > 0 %}
-<div class="collection-carousel-wrapper">
+<div class="collection-carousel-wrapper" >
   <h2 class="carousel-title">{{ collection.title }}</h2>
-
   <button class="carousel-btn left">‹</button>
-
   <div class="carousel-track">
     {% for product in collection.products limit: section.settings.max_products %}
       <div class="carousel-item">
@@ -49,7 +47,7 @@
 .collection-carousel-wrapper {
   position: relative;
   overflow: hidden;
-  padding: 1rem 0;
+  padding: 0 40px;
 }
 
 .carousel-title {

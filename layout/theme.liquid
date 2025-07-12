@@ -271,67 +271,111 @@
 
   <script>
     let currentDrawerProduct = null;
+
     function renderOptionPickers(options) {
-  let html = '';
+      let html = '';
 
-  options.forEach((option, index) => {
-    const name = option.name;
-    const values = option.values;
+      options.forEach((option, index) => {
+        const name = option.name;
+        const values = option.values;
 
-    if (name.toLowerCase() === 'talla') {
-      html += `<div class="option-group" data-position="${index + 1}">
-        <label>${name}</label>
-        <div class="talla-options">`;
+        if (name.toLowerCase() === 'talla') {
+          html += `<div class="option-group" data-position="${index + 1}">
+            <label>${name}</label>
+            <div class="talla-options">`;
 
-      values.forEach(value => {
-        html += `
-          <button
-            type="button"
-            class="talla-box"
-            data-value="${value}"
-            onclick="selectTalla(this)"
-          >
-            ${value}
-          </button>
-        `;
+          values.forEach(value => {
+            html += `
+              <button
+                type="button"
+                class="talla-box"
+                data-value="${value}"
+                onclick="selectTalla(this)"
+              >
+                ${value}
+              </button>
+            `;
+          });
+
+          html += `</div></div>`;
+        } else {
+          // Default dropdown for other options like Color
+          html += `<label for="option-${index}">${name}</label>`;
+          html += `<select id="option-${index}" class="variant-option" data-position="${index + 1}">`;
+          values.forEach(value => {
+            html += `<option value="${value}">${value}</option>`;
+          });
+          html += `</select>`;
+        }
       });
 
-      html += `</div></div>`;
-    } else {
-      // Default dropdown for other options like Color
-      html += `<label for="option-${index}">${name}</label>`;
-      html += `<select id="option-${index}" class="variant-option" data-position="${index + 1}">`;
-      values.forEach(value => {
-        html += `<option value="${value}">${value}</option>`;
-      });
-      html += `</select>`;
+      return html;
     }
-  });
 
-  return html;
-}
+    const htmlElement = document.documentElement; // <html> element
+
+    const observer = new MutationObserver(mutations => {
+      mutations.forEach(mutation => {
+        if (
+          mutation.type === 'attributes' &&
+          mutation.attributeName === 'class' &&
+          htmlElement.classList.contains('js-drawer-open')
+        ) {
+          updateCartState()
+        }
+      });
+    });
+
+    observer.observe(htmlElement, {
+      attributes: true,
+      attributeFilter: ['class']
+    });
+
+    function COMPUTE_ORIGINAL_PRICE() {
+      console.log('compute prices')
+
+      fetch('/cart.js')
+        .then(response => response.json())
+        .then(cart => {
+          console.log('Cart:', cart);
+
+          const totalFinalLinePrice = cart.items.reduce((total, item) => {
+            return total + item.final_line_price;
+          }, 0);
+
+          const totalDiscountPrice = cart.items.reduce((total, item) => {
+            return total + item.original_line_price;
+          }, 0);
+
+          const totalInCurrency = (totalFinalLinePrice / 100).toFixed(2);
+          const totalDiscountInCurrency = (totalDiscountPrice / 100).toFixed(2);
+          document.getElementById('original-cart-total').innerText = `€${totalDiscountInCurrency}`;
+          document.getElementById('original-sub-total').innerText = `€${totalInCurrency}`;
+        })
+        .catch(error => {
+          console.error('Failed to fetch cart:', error);
+        });
+    }
 
     function selectTalla(el) {
-  // Deselect all buttons
-  document.querySelectorAll('.talla-box').forEach(btn => btn.classList.remove('active'));
-  // Mark selected
-  el.classList.add('active');
-}
+      document.querySelectorAll('.talla-box').forEach(btn => btn.classList.remove('active'));
+      el.classList.add('active');
+    }
 
     function findSelectedVariant(product) {
-  const selects = document.querySelectorAll('.variant-option');
-  const selectedOptions = Array.from(selects).map(select => select.value);
+      const selects = document.querySelectorAll('.variant-option');
+      const selectedOptions = Array.from(selects).map(select => select.value);
 
-  // Get selected Talla from active box
-  const tallaActive = document.querySelector('.talla-box.active');
-  if (!tallaActive) return null;
+      // Get selected Talla from active box
+      const tallaActive = document.querySelector('.talla-box.active');
+      if (!tallaActive) return null;
 
-  selectedOptions.splice(1, 0, tallaActive.dataset.value); // Insert Talla at position 2 (index 1)
+      selectedOptions.splice(1, 0, tallaActive.dataset.value); // Insert Talla at position 2 (index 1)
 
-  return product.variants.find(v =>
-    v.options.every((opt, idx) => opt === selectedOptions[idx])
-  );
-}
+      return product.variants.find(v =>
+        v.options.every((opt, idx) => opt === selectedOptions[idx])
+      );
+    }
     
    function openProductDrawer(productId) {
      fetch(window.Shopify.routes.root + `products/${productId}.js`)
@@ -346,7 +390,7 @@
   
         drawerBody.innerHTML = `
           <button class="close-drawer" onclick="closeProductDrawer()">Close</button>
-          <img src="${product.images[0]}" alt="${product.title}" />
+          <img src="${product.images[0]}" alt="${product.title}" loading='eager'/>
           <h2>${product.title}</h2>
   
           ${pickersHTML}
@@ -359,35 +403,171 @@
       });
   }
     
-    function closeProductDrawer() {
-  currentDrawerProduct = null;
-  document.querySelector('.product-drawer').classList.remove('open');
-  document.getElementById('product-overlay').classList.remove('active');
-}
-
-   function confirmAddToCart() {
-  const product = currentDrawerProduct;
-  const variant = findSelectedVariant(product);
-
-  if (!variant || !variant.available) {
-    alert('This variant is not available.');
-    return;
+  function closeProductDrawer() {
+    currentDrawerProduct = null;
+    document.querySelector('.product-drawer').classList.remove('open');
+    document.getElementById('product-overlay').classList.remove('active');
   }
 
-  fetch('/cart/add.js', {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ id: variant.id, quantity: 1 })
-  })
+  function confirmAddToCart() {
+    const product = currentDrawerProduct;
+    const variant = findSelectedVariant(product);
+
+    if (!variant || !variant.available) {
+      alert('This variant is not available.');
+      return;
+    }
+
+    fetch('/cart/add.js', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ id: variant.id, quantity: 1 })
+    })
     .then(() => {
       closeProductDrawer();
+      document.querySelector('.js-drawer-open-cart')?.click();
     })
     .catch(error => {
       console.error('Add to cart error:', error);
     });
-}
+  }
 
-    </script>
+  function attachQuantityHandlers() {
+    document.querySelectorAll('.js-qty__adjust').forEach(button => {
+      button.addEventListener('click', async (e) => {
+        const isMinus = button.classList.contains('js-qty__adjust--minus');
+        const input = button.closest('.js-qty__wrapper').querySelector('.js-qty__num');
+        let quantity = parseInt(input.value);
+        const key = input.dataset.id;
+
+        if (isMinus) {
+          quantity = Math.max(0, quantity - 1); // prevent negative
+        } else {
+          quantity += 1;
+        }
+
+        input.value = quantity;
+
+        try {
+          const response = await fetch('/cart/change.js', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+              id: key,
+              quantity: quantity
+            })
+          });
+
+          if (!response.ok) throw new Error('Failed to update cart');
+
+          document.dispatchEvent(new Event('cart:updated'));
+        } catch (err) {
+          console.error('Error updating quantity:', err);
+        }
+      });
+    });
+  }
+
+  function renderCartUI(cart) {
+    const container = document.querySelector('[data-products]');
+    if (!container) return;
+
+    container.innerHTML = ''; // Clear old items
+
+    cart.items.forEach(item => {
+      const imageUrl = item.image || '';
+      const itemURL = item.url || '#';
+      const title = item.product_title;
+      const variantTitle = item.variant_title;
+      const quantity = item.quantity;
+      const linePrice = item.line_price / 100;
+      const originalPrice = item.original_line_price / 100;
+      const currentPrice = item.final_line_price / 100;
+      const key = item.key;
+
+      // Build variants HTML
+      const variantHTML = item.options_with_values?.map(option =>
+        `<div><span>${option.name}:</span> ${option.value}</div>`
+      ).join('') || '';
+
+      const discounts = item.line_level_discount_allocations?.map(d =>
+        `<small class="cart__discount">${d.discount_application.title} (-${parseInt(d.amount) / 100})</small>`
+      ).join('') || '';
+
+      const itemHTML = `
+        <div class="cart__item" data-key="${key}">
+          <div class="cart__image">
+            <a href="${itemURL}" style="height: 0; padding-bottom: 100%;">
+              <img loading='eager' src="${imageUrl}" alt="${title}" style="max-width: 100%; height: auto;">
+            </a>
+          </div>
+          <div class="cart__item-details">
+            <div class="cart__item-title">
+              <a href="${itemURL}" class="cart__item-name">${title}</a>
+              <div class="cart__item--variants">${variantHTML}</div>
+            </div>
+            <div class="cart__item-sub">
+              <div>
+                <div class="js-qty__wrapper">
+                  <input type="text"
+                    class="js-qty__num"
+                    value="${quantity}"
+                    min="0"
+                    pattern="[0-9]*"
+                    data-id="${key}">
+                  <button type="button" class="js-qty__adjust js-qty__adjust--minus">−</button>
+                  <button type="button" class="js-qty__adjust js-qty__adjust--plus">+</button>
+                </div>
+                <div class="cart__remove">
+                  <a href="/cart/change?id=${key}&quantity=0" class="text-link">Remove</a>
+                </div>
+              </div>
+
+              <div class="cart__item-price-col text-right">
+                ${originalPrice > currentPrice
+                  ? `<span class="cart__price cart__price--strikethrough" style="color: red; text-decoration: line-through;">$${originalPrice.toFixed(2)}</span>
+                    <span class="cart__price cart__discount" style="color: green; font-weight: bold;">$${currentPrice.toFixed(2)}</span>`
+                  : `<span class="cart__price">$${currentPrice.toFixed(2)}</span>`
+                }
+                ${discounts}
+              </div>
+            </div>
+          </div>
+        </div>
+      `;
+
+      container.insertAdjacentHTML('beforeend', itemHTML);
+    });
+    attachQuantityHandlers();
+  }
+
+  async function updateCartState() {
+    try {
+      const response = await fetch('/cart.js');
+      const cart = await response.json();
+      COMPUTE_ORIGINAL_PRICE();
+      renderCartUI(cart); // Refresh UI
+    } catch (err) {
+      console.error('Error fetching cart:', err);
+    }
+  }
+
+  ['cart:updated', 'ajaxProduct:added', 'ajaxProduct:error'].forEach(event => {
+    document.addEventListener(event, async e => {
+      try {
+        const response = await fetch('/cart.js');
+        const cart = await response.json();
+        COMPUTE_ORIGINAL_PRICE();
+        renderCartUI(cart);
+      } catch (err) {
+        console.error('Error fetching cart:', err);
+      }
+    });
+  });
+
+  </script>
 </head>
 
 <body style="max-width: 100% !important;" class="template-{{ template | replace: '.', ' ' | truncatewords: 1, '' | handle }}{% if request.path == '/challenge' %} template-challange{% endif %}" data-center-text="{{ settings.type_body_align_text }}" data-button_style="{{ settings.button_style }}" data-type_header_capitalize="{{ settings.type_header_capitalize }}" data-type_headers_align_text="{{ settings.type_headers_align_text }}" data-type_product_capitalize="{{ settings.type_product_capitalize }}" data-swatch_style="{{ settings.swatch_style }}" {% if settings.disable_animations %}data-disable-animations="true"{% endif %}>

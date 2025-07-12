@@ -26,9 +26,7 @@ function updateDiscountProgress() {
     });
 }
 
-
-
 ['cart:updated', 'cartdrawer:opened', 'ajaxProduct:added', 'ajaxProduct:error'].forEach(event => document.addEventListener(event, e => {
- updateDiscountProgress();
-  console.log('Done');
+  updateDiscountProgress();
+  // console.log('Done');
 }));
