@@ -35,13 +35,87 @@
 -%}
 {%- render 'cart-drawer' -%}
 
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const header = document.querySelector('#SiteHeader');
+    if (!header) return;
+
+    const observer = new MutationObserver(() => {
+      const bgColor = getComputedStyle(header).backgroundColor;
+
+      observer.disconnect(); // stop observing temporarily
+
+      if (bgColor === 'rgb(255, 255, 255)') {
+        header.classList.add('site-header--white');
+      } else {
+        header.classList.remove('site-header--white');
+      }
+
+      observer.observe(header, {
+        attributes: true,
+        attributeFilter: ['class']
+      }); // start observing again
+    });
+
+    observer.observe(header, {
+      attributes: true,
+      attributeFilter: ['class']
+    });
+  });
+</script>
+
+
 <style>
-  .custom-buttons {
-    display: flex;
-    gap: 1rem;
-    align-items: center;
-    position: relative;
+  @media (max-width: 767px) {
+    .custom-buttons {
+      display: none;
+    }
   }
+
+  .custom-buttons {
+  }
+
+  .menu-dropdown {
+    position: relative;
+    display: inline-block;
+  }
+
+  .menu-dropdown button {
+    cursor: pointer;
+    color: #fff;
+    font-size: 20px;
+  }
+
+  .site-header--white .menu-dropdown button {
+    color: black;
+  }
+  
+  .dropdown-content {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: white;
+    min-width: 160px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    z-index: 1000;
+  }
+
+  .menu-dropdown:hover .dropdown-content {
+    display: block;
+  }
+
+  .dropdown-content a {
+    display: block;
+    padding: 10px 15px;
+    text-decoration: none;
+    color: #333;
+  }
+
+  .dropdown-content a:hover {
+    background-color: #f0f0f0;
+  }
+
   
   .dropdown {
     position: relative;
@@ -196,31 +270,42 @@
                       <svg aria-hidden="true" focusable="false" role="presentation" class="icon icon-hamburger" viewBox="0 0 64 64"><title>icon-hamburger</title><path d="M7 15h51M7 32h43M7 49h51"/></svg>
                       <span class="icon__fallback-text">{{ 'general.drawers.navigation' | t }}</span>
                     </button>
-                   <div class="custom-buttons">
-                    {% if menu_women %}
+                    <div class="custom-buttons">
+                      {% assign main_menu = linklists.main-menu.links %}
                       <div class="dropdown">
-                        <button class="dropdown-toggle">{{ menu_women.title.value }}</button>
-                        <div class="dropdown-menu">
-                          {% for item in menu_women.items.value %}
-                            <a href="{{ item.url }}">{{ item.title }}</a>
-                          {% endfor %}
-                        </div>
+                        {% for link in main_menu %}
+                          {% if link.title == "Mujer" %}
+                            <div class="menu-dropdown mujer-dropdown">
+                              <button onclick="location.href='{{ link.url }}'">
+                                Shop {{ link.title }}
+                              </button>
+                              {% if link.links.size > 0 %}
+                              <div class="dropdown-content">
+                                {% for sublink in link.links %}
+                                  <a href="{{ sublink.url }}">{{ sublink.title }}</a>
+                                {% endfor %}
+                              </div>
+                              {% endif %}
+                            </div>
+                          {% endif %}
+                          {% if link.title == "Hombres" %}
+                            <div class="menu-dropdown hombres-dropdown">
+                              <button onclick="location.href='{{ link.url }}'">
+                                Shop {{ link.title }}
+                              </button>
+                              {% if link.links.size > 0 %}
+                                <div class="dropdown-content">
+                                  {% for sublink in link.links %}
+                                    <a href="{{ sublink.url }}">{{ sublink.title }}</a>
+                                  {% endfor %}
+                                </div>
+                              {% endif %}
+                            </div>
+                          {% endif %}
+                        {% endfor %}
                       </div>
-                    {% endif %}
-                  
-                    {% if menu_men %}
-                      <div class="dropdown">
-                        <button class="dropdown-toggle">{{ menu_men.title.value }}</button>
-                        <div class="dropdown-menu">
-                          {% for item in menu_men.items.value %}
-                            <a href="{{ item.url }}">{{ item.title }}</a>
-                          {% endfor %}
-                        </div>
-                      </div>
-                    {% endif %}
+                    </div>
                   </div>
-                  </div>
-                
                 </div>
               </div>
 
@@ -241,7 +326,6 @@
           </div>
 
           {%- if section.settings.main_menu_alignment == 'center' -%}
-
             <div class="text-center">
               {%- render 'header-desktop-nav', main_menu: main_menu, dropdown_alignment: dropdown_alignment, hover_menu: section.settings.hover_menu -%}
             </div>
