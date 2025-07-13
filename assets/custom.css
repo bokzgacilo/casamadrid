@@ -7,6 +7,25 @@
   color: red !important;
 }
 
+.custom-add-to-cart {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    z-index: 2;
+    color: #fff;
+    padding: 8px;
+    background-color: #000;
+    display: none;
+    border-radius: 4px;
+    align-items: center;
+    justify-content: center;
+  }
+
+  @media screen and (max-width: 768px) {
+     .custom-add-to-cart {
+      display: flex;
+    }
+  }
 
 .grid-product__meta {
   text-align: center;

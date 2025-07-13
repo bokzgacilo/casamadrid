@@ -46,28 +46,6 @@ Arguments
   endif
 -%}
 
-<style>
-  .custom-add-to-cart {
-    position: absolute;
-    bottom: 10px;
-    right: 10px;
-    z-index: 2;
-    color: #fff;
-    padding: 8px;
-    background-color: #000;
-    display: none;
-    border-radius: 4px;
-    align-items: center;
-    justify-content: center;
-  }
-
-  @media screen and (max-width: 768px) {
-     .custom-add-to-cart {
-      display: flex;
-    }
-  }
-</style>
-
 <div class="grid__item grid-product {{ gridView }} {% if quick_shop_enable %} grid-product__has-quick-shop{% endif %}" data-aos="row-of-{{ per_row }}" data-product-handle="{{ product.handle }}" data-product-id="{{ product.id }}">
   <div class="grid-product__content">
 
@@ -111,7 +89,6 @@ Arguments
     -%}
 
     <div class="grid__item-image-wrapper">
-      
       <!-- <a href="{{ product.url | within: collection }}" class="grid-product__image-mask"> -->
       <a class="grid-product__image-mask">
         <button 

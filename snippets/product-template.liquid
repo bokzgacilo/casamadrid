@@ -890,6 +890,7 @@
                         right: 10px;
                       }
                     </style>
+
                     <div
                       class="carousel-container"
                       ontouchstart="startTouch(event)"
@@ -904,7 +905,7 @@
                             class="product-image">
                           <div>
                             <div class="review-text">
-                              "Ich bin super zufrieden mit meinem Kauf, nachdem das Paket schnell zu mir nach Hause                                  
+                              "Ich bin super zufrieden mit meinem Kauf, nachdem das Paket schnell zu mir nach Hause                                                     
                               geliefert wurde. Ich danke Ihnen so sehr!"
                             </div>
                             <div class="trustpilot-container">
@@ -923,7 +924,7 @@
                             class="product-image">
                           <div>
                             <div class="review-text">
-                              "Ich habe gestern meine zweite Bestellung bei Nue Fashion erhalten. Die Kleider sind                                  
+                              "Ich habe gestern meine zweite Bestellung bei Nue Fashion erhalten. Die Kleider sind                                                     
                               wieder schön und enthalten schöne Details"
                             </div>
                             <div class="trustpilot-container">
@@ -941,7 +942,7 @@
                             class="product-image">
                           <div>
                             <div class="review-text">
-                              "Netter Service, und meiner Bestellung lag sogar eine handgeschriebene Karte bei. Eine                                  
+                              "Netter Service, und meiner Bestellung lag sogar eine handgeschriebene Karte bei. Eine                                                     
                               schöne persönliche Note!"
                             </div>
                             <div class="trustpilot-container">
@@ -960,7 +961,7 @@
                             class="product-image">
                           <div>
                             <div class="review-text">
-                              "Die Lieferung erfolgte schnell und die Rücksendung eines Teils der Bestellung war                                  
+                              "Die Lieferung erfolgte schnell und die Rücksendung eines Teils der Bestellung war                                                     
                               problemlos und einfach."
                             </div>
                             <div class="trustpilot-container">
@@ -1016,6 +1017,7 @@
                         endX = 0;
                       }
                     </script>
+
 
                   {%- when 'price' -%}
                     <div class="product-block product-block--price" {{ block.shopify_attributes }}>
@@ -1253,7 +1255,10 @@
                           data-product-name="{{ product.title | escape }}"
                           data-base-url="{{ shop.url }}{{ routes.root_url }}"></div>
                       {%- endif -%}
+                      {% render 'custom-buy-with' %}
+
                     </div>
+
                   {%- when 'icon_with_text_2' -%}
                     <div class="icon_text_columne_main">
                       <div class="icon_text_columne_main_inner">
@@ -1290,6 +1295,7 @@
                         </div>
                       </div>
                     </div>
+
                     <style>
                       .icon_text_columne_main {
                         display: flex;
@@ -1324,6 +1330,7 @@
                         line-height: 1.6;
                       }
                     </style>
+
                   {%- when 'sales_point' -%}
                     {%- unless block.settings.text == blank -%}
                       <div class="product-block product-block--sales-point" {{ block.shopify_attributes }}>
@@ -1547,6 +1554,7 @@
                           </li>
                         </ul>
                       </div>
+
                     {%- endunless -%}
                   {%- when 'inventory_status' -%}
                     {%- render 'product-inventory'
