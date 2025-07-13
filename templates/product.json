@@ -206,64 +206,10 @@
           "type": "shopify://apps/conversion-bear-trust-badges/blocks/widget/163a9b59-0ec2-4cb7-bf5c-31408b4a9420",
           "settings": {}
         },
-        "shpping_bar_CkGBN8": {
-          "type": "shpping_bar",
-          "disabled": true,
-          "settings": {}
-        },
-        "payment_icon_DQnJJj": {
-          "type": "payment_icon",
-          "disabled": true,
-          "settings": {}
-        },
         "custom_MTyQMe": {
           "type": "custom",
           "settings": {
             "code": "<div style=\"width:100%;background-color: #fdecea; color: #a94442; padding: 10px 15px; font-family: Arial, sans-serif; font-size: 14px; display: flex; align-items: center;\">\n  <span style=\"margin-right: 10px;\">🕒</span>\n  <span><strong>ACTUALIZACIÓN: ¡Stock limitado por la alta demanda durante nuestra Celebración de la Maternidad!\nQuedan pocas unidades de los productos en oferta.<strong></strong></strong></span>\n</div>"
-          }
-        },
-        "red_box_6tyYdf": {
-          "type": "red_box",
-          "disabled": true,
-          "settings": {
-            "restoration": "<p class=\"updated_text_main_p\">                              <span class=\"para\">\n                                  <strong>Restauración:</strong> Debido a la abrumadora demanda durante nuestras rebajas de invierno, nuestras existencias están casi agotadas. Una vez que este producto se agote, ya no se podrá volver a pedir. </br></br>Nota: Si todavía puede pulsar el botón  <strong> \"Añadir a la cesta\", </strong> artículos aún en stock. \n                                </span>\n</p>"
-          }
-        },
-        "description": {
-          "type": "description",
-          "settings": {
-            "is_tab": true
-          }
-        },
-        "tab_6URenV": {
-          "type": "tab",
-          "settings": {
-            "title": "Envío gratuito en toda España",
-            "content": "<p><strong>¿Te encanta comprar sin preocupaciones? </strong>¡Disfruta de envío gratis en todos tus pedidos dentro de España! Sin costes ocultos y entrega rápida. Compra ahora y recíbelo sin gastos de envío.</p>",
-            "page": ""
-          }
-        },
-        "tab_JF4BDf": {
-          "type": "tab",
-          "settings": {
-            "title": "Garantía de reembolso de 30 días",
-            "content": "<p><strong>Compra con total confianza</strong>. Si no estás satisfecho/a, te devolvemos tu dinero hasta 30 días después de la compra. ¡Sin preguntas!<br/>Explora nuestros productos sin riesgo.</p>",
-            "page": ""
-          }
-        },
-        "tab_Fcddir": {
-          "type": "tab",
-          "settings": {
-            "title": "ASISTENCIA  - SIEMPRE AQUÍ PARA TI",
-            "content": "<p>¿Necesitas ayuda o tienes preguntas? Nuestro equipo de atención al cliente está disponible 24 horas al día, 7 días a la semana, incluidos fines de semana y festivos. No importa cuándo nos necesites, ¡estaremos encantados de ayudarte!<br/><br/>Contáctanos como prefieras:<br/><br/>📧 Email: <a href=\"/pages/contact\" title=\"Contact\">info@casademodamadrid.es</a></p>",
-            "page": ""
-          }
-        },
-        "custom_9FfkWU": {
-          "type": "custom",
-          "disabled": true,
-          "settings": {
-            "code": "<div class=\"trust-box\" style=\"display: flex; align-items: center;\">\n  <img width=\"35\" height=\"35\" class=\"trust-image\" src=\"//icon-amsterdam.com/cdn/shop/files/rico-verhoeven_500x500.png?v=1704370049\" alt=\"Prueba social\" style=\"margin-right: 10px;\">\n  <div class=\"trust-box-wrapper\">\n    <p class=\"trust-text\" style=\"margin: 0;\">\n      <strong>Rico Verhoeven, Casemiro</strong> y <strong>más de 215.000</strong> personas más usan CASA DE MODA MADRID\n    </p>\n  </div>\n</div>"
           }
         }
       },
@@ -280,15 +226,7 @@
         "conversion_bear_trust_badges_widget_CCQhWh",
         "conversion_bear_trust_badges_widget_6bKfXM",
         "conversion_bear_trust_badges_widget_iQqC43",
-        "shpping_bar_CkGBN8",
-        "payment_icon_DQnJJj",
-        "custom_MTyQMe",
-        "red_box_6tyYdf",
-        "description",
-        "tab_6URenV",
-        "tab_JF4BDf",
-        "tab_Fcddir",
-        "custom_9FfkWU"
+        "custom_MTyQMe"
       ],
       "custom_css": [
         ".saved_amount {display: none;}",
