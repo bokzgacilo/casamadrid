@@ -195,6 +195,79 @@
         "max_products": 10
       }
     },
+    "faq_Xcn63c": {
+      "type": "faq",
+      "blocks": {
+        "question_g4Rp7x": {
+          "type": "question",
+          "settings": {
+            "title": "Frequently asked question",
+            "text": "<p>Use this text to answer questions in as much detail as possible for your customers.</p>"
+          }
+        },
+        "question_MzfnN8": {
+          "type": "question",
+          "settings": {
+            "title": "Frequently asked question",
+            "text": "<p>Use this text to answer questions in as much detail as possible for your customers.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "question_g4Rp7x",
+        "question_MzfnN8"
+      ],
+      "name": "t:sections.faq.presets.faq.name",
+      "settings": {
+        "title": "FAQs"
+      }
+    },
+    "text_banner_3KcgDN": {
+      "type": "text-banner",
+      "blocks": {
+        "text_iJLeNp": {
+          "type": "text",
+          "settings": {
+            "image": "shopify://shop_images/truck_gif.webp",
+            "heading": "FREE SHIPPING",
+            "textarea": "<p>We offer free worldwide shipping on all orders.</p>"
+          }
+        },
+        "text_dECTBf": {
+          "type": "text",
+          "settings": {
+            "image": "shopify://shop_images/Doc_gif.webp",
+            "heading": "RETURN GUARANTEE",
+            "textarea": "<p>If your purchase does not meet your expectations, you can return it within 14 days.</p>"
+          }
+        },
+        "text_CpJgf6": {
+          "type": "text",
+          "settings": {
+            "image": "shopify://shop_images/checkmark_gif.webp",
+            "heading": "SECURE PAYMENTS",
+            "textarea": "<p><br/>We offer secure payments with credit card, Paypal, Klarna, and Shoppa</p>"
+          }
+        }
+      },
+      "block_order": [
+        "text_iJLeNp",
+        "text_dECTBf",
+        "text_CpJgf6"
+      ],
+      "name": "Text banner",
+      "settings": {
+        "notification_heading_size": 19,
+        "notification_font_size": 13,
+        "vertical_spacing": 30,
+        "spacing": 20,
+        "background": "#ffffff",
+        "text_color": "#000000",
+        "text_center": true,
+        "add_divider": false,
+        "section_padding": "both"
+      }
+    },
     "slideshow_eQHciW": {
       "type": "slideshow",
       "blocks": {
@@ -252,33 +325,6 @@
         "autoplay_speed": 5,
         "lazyload_images": true
       }
-    },
-    "faq_Xcn63c": {
-      "type": "faq",
-      "blocks": {
-        "question_g4Rp7x": {
-          "type": "question",
-          "settings": {
-            "title": "Frequently asked question",
-            "text": "<p>Use this text to answer questions in as much detail as possible for your customers.</p>"
-          }
-        },
-        "question_MzfnN8": {
-          "type": "question",
-          "settings": {
-            "title": "Frequently asked question",
-            "text": "<p>Use this text to answer questions in as much detail as possible for your customers.</p>"
-          }
-        }
-      },
-      "block_order": [
-        "question_g4Rp7x",
-        "question_MzfnN8"
-      ],
-      "name": "t:sections.faq.presets.faq.name",
-      "settings": {
-        "title": "FAQs"
-      }
     }
   },
   "order": [
@@ -291,6 +337,7 @@
     "featured_collection_YTh39f",
     "collection_carousel_WWwH89",
     "faq_Xcn63c",
+    "text_banner_3KcgDN",
     "slideshow_eQHciW"
   ]
 }
