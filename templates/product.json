@@ -1,1 +1,758 @@
-{"sections":{"collestion_list_bar_CGzERK":{"type":"collestion-list-bar","blocks":{"text_c4G48a":{"type":"text","settings":{"link_name":"Mujer Bestsellers","link_url":"shopify:\/\/collections\/mujer-bestsellers"}},"text_enmMhr":{"type":"text","settings":{"link_name":"Mujer Chaquetas","link_url":"shopify:\/\/collections\/mujer-chaquetas"}},"text_9krJeb":{"type":"text","settings":{"link_name":"Mujer Monos","link_url":"shopify:\/\/collections\/mujer-monos"}},"text_ncf4Ym":{"type":"text","settings":{"link_name":"Mujer Pantalones","link_url":"shopify:\/\/collections\/mujer-pantalones"}},"text_zFztaF":{"type":"text","settings":{"link_name":"Mujer Tops","link_url":"shopify:\/\/collections\/mujer-tops"}},"text_KmQ6kq":{"type":"text","settings":{"link_name":"Mujer Vestidos","link_url":"shopify:\/\/collections\/mujer-vestidos"}},"text_dWazy7":{"type":"text","settings":{"link_name":"Mujer Zapatos","link_url":"shopify:\/\/collections\/mujer-zapatos"}},"text_wyJ8kN":{"type":"text","settings":{"link_name":"Mujer Zapatos","link_url":"shopify:\/\/collections\/mujer-zapatos"}},"text_fQMKfq":{"type":"text","settings":{"link_name":"Hombres Chaquetas","link_url":"shopify:\/\/collections\/chaquetas"}},"text_n6cfG8":{"type":"text","settings":{"link_name":"Hombres Jerséis","link_url":"shopify:\/\/collections\/jerseis"}},"text_zPDiFk":{"type":"text","settings":{"link_name":"Hombres Pantalones","link_url":"shopify:\/\/collections\/pantalones"}},"text_JbcL4f":{"type":"text","settings":{"link_name":"Hombres Pantalones","link_url":"shopify:\/\/collections\/pantalones"}},"text_Rid8kA":{"type":"text","settings":{"link_name":"Hombres Tops","link_url":"shopify:\/\/collections\/tops"}},"text_q3Cr8h":{"type":"text","settings":{"link_name":"Hombres Zapatos","link_url":"shopify:\/\/collections\/zapatos"}}},"block_order":["text_c4G48a","text_enmMhr","text_9krJeb","text_ncf4Ym","text_zFztaF","text_KmQ6kq","text_dWazy7","text_wyJ8kN","text_fQMKfq","text_n6cfG8","text_zPDiFk","text_JbcL4f","text_Rid8kA","text_q3Cr8h"],"disabled":true,"settings":{}},"main":{"type":"main-product","blocks":{"custom_AbG3jj":{"type":"custom","name":"Rating","settings":{"code":"<a href=\"#social-proofss\" class=\"rating-container\" bis_skin_checked=\"1\">\n    <img src=\"\/\/loramuenchen.de\/cdn\/shop\/t\/3\/assets\/sterne.png?v=19798183704476300331744813930\" alt=\"sterne\" class=\"rating-stars\" style=\"width: 45px; height: auto; margin-right: 5px; margin-top: 5px;\">\n    <span class=\"rating-text\" style=\"font size:1px\"><strong>4.7 \/ 5.0<\/strong> basado en más de 8235 reseñas<\/span>  \n  <\/a>\n<style>\n .rating-container {\n    margin-bottom: 8px;\n    display: flex;\n    align-items: center;\n}\n    @media (max-width:749px)\n    {\n      span.rating-text {\n    font-size: 14px;\n}\n    }\n  <\/style>"}},"title_T63aif":{"type":"title","settings":{}},"price":{"type":"price","settings":{}},"custom_tbUyXz":{"type":"custom","name":"Custom Sales Point","settings":{"code":"{% render 'custom-sales-point-snippet' %}"}},"red_box_v2_tCKagT":{"type":"red_box_v2","name":"RED BOX","settings":{"text":"<p><strong>ÚLTIMA OPORTUNIDAD:<\/strong> Nuestros artículos exclusivos en oferta son limitados – hasta agotar existencias. ¡No te lo pierdas!<br\/><br\/><strong>Atención:<\/strong> Mientras puedas hacer clic en \"<strong>Agregar al carrito<\/strong>\", el artículo sigue disponible. No reservamos productos.<\/p>","bg_color":"#e53935","text_color":"#ffffff"}},"kiwi_size_chart_recommender_kiwi_sizing_rywQVN":{"type":"shopify:\/\/apps\/kiwi-size-chart-recommender\/blocks\/kiwiSizing\/b7369922-bf15-44ce-a121-a22a8fcbc4b0","settings":{"product":"{{product}}","waitForElementSelector":"","waitForElementDelay":5}},"variant_picker_bfb7nf":{"type":"variant_picker","settings":{"variant_labels":true,"picker_type":"button","product_dynamic_variants_enable":true,"color_swatches":true}},"size_fit_QWLeWU":{"type":"size-fit","settings":{"sizefit":"<div class=\"passform-labels\" bis_skin_checked=\"1\">\n<span>pequeña<\/span>\n<span><\/span>\n<span>Mediana<\/span>\n<span><\/span>\n<span>grande<\/span>\n<\/div>"}},"buy_buttons":{"type":"buy_buttons","settings":{"show_dynamic_checkout":false,"surface_pickup_enable":false}},"conversion_bear_trust_badges_widget_CCQhWh":{"type":"shopify:\/\/apps\/conversion-bear-trust-badges\/blocks\/widget\/163a9b59-0ec2-4cb7-bf5c-31408b4a9420","settings":{}},"conversion_bear_trust_badges_widget_6bKfXM":{"type":"shopify:\/\/apps\/conversion-bear-trust-badges\/blocks\/widget\/163a9b59-0ec2-4cb7-bf5c-31408b4a9420","settings":{}},"conversion_bear_trust_badges_widget_iQqC43":{"type":"shopify:\/\/apps\/conversion-bear-trust-badges\/blocks\/widget\/163a9b59-0ec2-4cb7-bf5c-31408b4a9420","settings":{}},"shpping_bar_CkGBN8":{"type":"shpping_bar","disabled":true,"settings":{}},"payment_icon_DQnJJj":{"type":"payment_icon","disabled":true,"settings":{}},"custom_MTyQMe":{"type":"custom","settings":{"code":"<div style=\"width:100%;background-color: #fdecea; color: #a94442; padding: 10px 15px; font-family: Arial, sans-serif; font-size: 14px; display: flex; align-items: center;\">\n  <span style=\"margin-right: 10px;\">🕒<\/span>\n  <span><strong>ACTUALIZACIÓN: ¡Stock limitado por la alta demanda durante nuestra Celebración de la Maternidad!\nQuedan pocas unidades de los productos en oferta.<strong><\/strong><\/strong><\/span>\n<\/div>"}},"red_box_6tyYdf":{"type":"red_box","disabled":true,"settings":{"restoration":"<p class=\"updated_text_main_p\">                              <span class=\"para\">\n                                  <strong>Restauración:<\/strong> Debido a la abrumadora demanda durante nuestras rebajas de invierno, nuestras existencias están casi agotadas. Una vez que este producto se agote, ya no se podrá volver a pedir. <\/br><\/br>Nota: Si todavía puede pulsar el botón  <strong> \"Añadir a la cesta\", <\/strong> artículos aún en stock. \n                                <\/span>\n<\/p>"}},"description":{"type":"description","settings":{"is_tab":true}},"tab_6URenV":{"type":"tab","settings":{"title":"Envío gratuito en toda España","content":"<p><strong>¿Te encanta comprar sin preocupaciones? <\/strong>¡Disfruta de envío gratis en todos tus pedidos dentro de España! Sin costes ocultos y entrega rápida. Compra ahora y recíbelo sin gastos de envío.<\/p>","page":""}},"tab_JF4BDf":{"type":"tab","settings":{"title":"Garantía de reembolso de 30 días","content":"<p><strong>Compra con total confianza<\/strong>. Si no estás satisfecho\/a, te devolvemos tu dinero hasta 30 días después de la compra. ¡Sin preguntas!<br\/>Explora nuestros productos sin riesgo.<\/p>","page":""}},"tab_Fcddir":{"type":"tab","settings":{"title":"ASISTENCIA  - SIEMPRE AQUÍ PARA TI","content":"<p>¿Necesitas ayuda o tienes preguntas? Nuestro equipo de atención al cliente está disponible 24 horas al día, 7 días a la semana, incluidos fines de semana y festivos. No importa cuándo nos necesites, ¡estaremos encantados de ayudarte!<br\/><br\/>Contáctanos como prefieras:<br\/><br\/>📧 Email: <a href=\"\/pages\/contact\" title=\"Contact\">info@casademodamadrid.es<\/a><\/p>","page":""}},"custom_9FfkWU":{"type":"custom","disabled":true,"settings":{"code":"<div class=\"trust-box\" style=\"display: flex; align-items: center;\">\n  <img width=\"35\" height=\"35\" class=\"trust-image\" src=\"\/\/icon-amsterdam.com\/cdn\/shop\/files\/rico-verhoeven_500x500.png?v=1704370049\" alt=\"Prueba social\" style=\"margin-right: 10px;\">\n  <div class=\"trust-box-wrapper\">\n    <p class=\"trust-text\" style=\"margin: 0;\">\n      <strong>Rico Verhoeven, Casemiro<\/strong> y <strong>más de 215.000<\/strong> personas más usan CASA DE MODA MADRID\n    <\/p>\n  <\/div>\n<\/div>"}}},"block_order":["custom_AbG3jj","title_T63aif","price","custom_tbUyXz","red_box_v2_tCKagT","kiwi_size_chart_recommender_kiwi_sizing_rywQVN","variant_picker_bfb7nf","size_fit_QWLeWU","buy_buttons","conversion_bear_trust_badges_widget_CCQhWh","conversion_bear_trust_badges_widget_6bKfXM","conversion_bear_trust_badges_widget_iQqC43","shpping_bar_CkGBN8","payment_icon_DQnJJj","custom_MTyQMe","red_box_6tyYdf","description","tab_6URenV","tab_JF4BDf","tab_Fcddir","custom_9FfkWU"],"custom_css":[".saved_amount {display: none;}",".add-to-cart,.cart__checkout {background: black !important;}","span.product__price-savings {display: none;}"],"settings":{"sku_enable":false,"image_position":"left","image_size":"small","product_zoom_enable":false,"thumbnail_position":"beside","thumbnail_height":"flexible","thumbnail_arrows":false,"mobile_layout":"full","enable_video_looping":true,"product_video_style":"muted"}},"testimonials_xAL7Em":{"type":"testimonials","blocks":{"testimonial_GAYcq6":{"type":"testimonial","settings":{"icon":"5-stars","testimonial":"<p><em>Me encanta esta tienda. Pedí un vestido de verano online y llegó en solo 2 días. La tela es muy cómoda y el diseño es exactamente como en las fotos. Además, el servicio al cliente respondió rápidamente cuando tenía una duda sobre la talla. ¡100% recomendable para looks femeninos y elegantes!<\/em><\/p>","author":"Lucía Martínez ","author_info":"Barcelona, ES"}},"testimonial_V4ggtP":{"type":"testimonial","settings":{"icon":"5-stars","testimonial":"<p><em>¡Compré un vestido de fiesta en Casa de Moda Madrid y quedé enamorada! La calidad es increíble y el ajuste perfecto. El equipo fue muy amable y me ayudó a elegir el modelo ideal para mi cuerpo. ¡Recibí muchos cumplidos en la boda donde lo usé! Sin duda, volveré a comprar aquí.<\/em><\/p>","author":"María González (Madrid)","author_info":"Madrid, ES"}},"testimonial_d4UzzV":{"type":"testimonial","settings":{"icon":"5-stars","testimonial":"<p><em>Muy contenta con mi compra, el vestido es precioso y la atención fue excelente. Solo le pongo 4 estrellas porque me hubiera gustado más opciones de colores. Pero en general, una experiencia muy positiva. ¡Gracias, Casa de Moda Madrid!<\/em><\/p>","author":"Elena Ruiz","author_info":"Valencia, ES"}},"testimonial_jKzc89":{"type":"testimonial","settings":{"icon":"5-stars","testimonial":"<p><em>¡Increíble experiencia! Visité la tienda en Madrid y me sorprendió la variedad de vestidos para ocasiones especiales. Encontré uno que se ajustaba perfectamente a mi presupuesto y estilo. La asesora, Ana, fue muy profesional y paciente. Definitivamente mi tienda favorita ahora.<\/em><\/p>","author":"Sofía López (Sevilla)","author_info":"Sevilla, ES"}}},"block_order":["testimonial_GAYcq6","testimonial_V4ggtP","testimonial_d4UzzV","testimonial_jKzc89"],"disabled":true,"name":"t:sections.testimonials.presets.testimonials.name","settings":{"title":"Testimonials","align_text":"center","round_images":true,"color_background":"#f9f9f9","color_text":"#1c1d1d"}},"text_and_image_dJwYik":{"type":"text-and-image","custom_css":["h2 {color: black;}"],"name":"Storytell 1","settings":{"image":"shopify:\/\/shop_images\/a-softly-lit-photograph-captures-a-styli_q-YrGncSR56o4-Ssyx3FsA_cJPXAz6yQayQzP4LHhh-_g_1.png","image_mask":"none","image2_mask":"none","subtitle":"","title":"¡CELEBRAMOS CON UN MEGA-DESCUENTO!","text":"<p>¡Nuestro bebé ha llegado <strong>y queremos celebrarlo contigo!<\/strong> <\/p><p><strong>Por tiempo limitado,<\/strong> todos los productos tienen descuentos especiales. <strong>Date prisa:<\/strong> el stock vuela por la alta demanda <strong>y no queremos que te quedes sin tus favoritos.<\/strong><\/p><p><strong> ¡ÚLTIMAS UNIDADES!<\/strong><\/p><p><em>Con cariño,<\/em><br\/><strong>Isabela y Mateo<\/strong><br\/><em>Fundadores<\/em><\/p>","button_label":"","button_link":"","button_style":"primary","align_text":"left","image_width":"66","layout":"right","divider":false,"top_padding":false,"bottom_padding":false,"lazyload_images":true}},"text_and_image_LrXW8e":{"type":"text-and-image","disabled":true,"name":"t:sections.text-and-image.presets.image_with_text.name","settings":{"image":"shopify:\/\/shop_images\/O1cepLoYQaaot8miW8CGyg.webp","image_mask":"none","image2_mask":"none","subtitle":"","title":"Sobre nosotros","text":"<p>En <strong>Casa de moda madrid<\/strong> le brindamos una excelente experiencia de compra, ya que la satisfacción de nuestros clientes significa mucho para nosotros. Contamos con la combinación perfecta de ropa de moda adaptada a tus necesidades a través de nuestras prácticas de compra estándar. <br\/><br\/>Incluso si no está seguro de lo que quiere, nuestra tienda electrónica tiene varias formas de ayudarle a identificar sus necesidades. <br\/><br\/>Todo en<strong>Casa de moda madrid<\/strong> tiene que ver con nuestro compromiso de ayudarle a lucir lo mejor posible y generar confianza en usted mismo. Hemos estado en el negocio por más de un año y hemos logrado construir un negocio de buena reputación en línea. Contamos con un gran equipo y nuestro objetivo es expandir cada vez más nuestro negocio y ofrecer a nuestros clientes la mejor ropa de moda disponible. Si tiene alguna pregunta sobre nuestros productos o desea consultar la disponibilidad de un artículo, utilice la página \"Contáctenos\" para ponerse en contacto con nosotros.<br\/><br\/><\/p>","button_label":"","button_link":"","button_style":"primary","align_text":"left","image_width":"66","layout":"right","divider":false,"top_padding":true,"bottom_padding":true,"lazyload_images":true}},"rich_text_bg_EpRPAq":{"type":"rich-text-bg","blocks":{"heading_iTXiVb":{"type":"heading","settings":{"title":"Rich text"}},"text_TaBeFe":{"type":"text","settings":{"enlarge_text":true,"text":"<p>Nacimos como una marca de mujeres para mujeres, con la visión de vestir con elegancia y esencia andaluza.<br\/>Ahora, con el corazón lleno de recuerdos, anunciamos nuestro cierre.Gracias por formar parte de este viaje.<br\/>Para despedirnos, disfruta de un 50% de descuento en toda la colección.<br\/>Nuestra tienda online seguirá abierta durante esta última etapa, con 30 días de devolución garantizada.<\/p><p><strong>Solera Sevilla vive en cada mujer que viste con intenc<\/strong><\/p>"}}},"block_order":["heading_iTXiVb","text_TaBeFe"],"disabled":true,"name":"Rich Text Background","settings":{"image":"shopify:\/\/shop_images\/a-natural-light-portrait-photograph-of-a_6qvObgdVQ1Kts3yytLJGBw_L1_9XZCfRXaQL-SGFksMZA_1.webp","align_text":"center","narrow_column":true,"divider":false,"text_color":"#ffffff"}},"advanced_content_wPYDwQ":{"type":"advanced-content","blocks":{"image_mLqrmT":{"type":"image","settings":{"image":"shopify:\/\/shop_images\/O1cepLoYQaaot8miW8CGyg.webp","link":"","width":"100%","alignment":"top-middle"}},"liquid_HnA69V":{"type":"liquid","settings":{"code":"<div class=\"center-div\"><h2>Gracias por tu apoyo<\/h2>\n    <p>Dirigir esta tienda ha sido una experiencia increíble, llena de alegrías y desafíos. A lo largo de los años, hemos enfrentado de todo: desde exceso de inventario y dificultades financieras hasta los efectos del COVID. Incluso hemos tenido que lidiar con competidores que copiaban nuestros diseños y dejaban reseñas injustas.<\/p>\n    \n    <p>Mientras nos preparamos para cerrar este capítulo, estamos ofreciendo grandes descuentos para liquidar nuestro inventario restante. Despedirse nunca es fácil, pero esperamos que comprendan y apoyen nuestra decisión.<\/p>\n    \n    <p>Estamos profundamente agradecidos con todos ustedes que han formado parte de este camino, ya sea con un solo pedido o como clientes fieles.<\/p>\n    \n    <p><strong>Su apoyo ha significado el mundo para nosotros.<\/strong><\/p>\n    \n    <p>Con toda nuestra gratitud,<\/p>\n    <p><strong>Andrés y Sofía Cortés<br>Casa de moda madrid<\/strong><\/p><\/div>","width":"50%","alignment":"center"}}},"block_order":["image_mLqrmT","liquid_HnA69V"],"disabled":true,"name":"t:sections.advanced-content.presets.custom_content.name","settings":{"full_width":false,"space_around":true,"lazyload_images":true}},"social_proof_HrrAit":{"type":"social-proof","name":"Social Proofs","settings":{"image_prefix":"slide","image_count":4,"speed":60}},"text_banner_zk6BgW":{"type":"text-banner","blocks":{"text_7kAUxY":{"type":"text","settings":{"image":"shopify:\/\/shop_images\/664274fcb6bb82ba2369f115_img-carriers-square-correos4.svg","heading":"Envío gratuito y rastreable","textarea":"<p>Ofrecemos envío gratuito en todos tus pedidos. El envío solo está disponible para direcciones en españa.<\/p>"}},"text_W7C8NP":{"type":"text","settings":{"image":"shopify:\/\/shop_images\/2_c275c207-2de3-4b8d-852a-b5905d5248a3.webp","heading":"garantía de devolución en 30 días","textarea":"<p>Tras recibir tu pedido, dispones en 30 días para decidir si te quedas con el producto o lo devuelves sin problemas.<\/p>"}},"text_NYQyij":{"type":"text","settings":{"image":"shopify:\/\/shop_images\/Registro_mercantil.png","heading":"Más de 20 años de experiencia","textarea":"<p>Somos una empresa de moda bien establecida desde 2003. Descubre la diferencia en calidad, servicio y confiabilidad.<\/p>"}}},"block_order":["text_7kAUxY","text_W7C8NP","text_NYQyij"],"disabled":true,"custom_css":[".banner_text_content {max-width: 323px;}",".usp__content {gap: 10px;}","@media screen and (max-width: 740px) {.usp__content {flex-direction: column !important; text-align: center !important; margin-bottom: 10px !important; gap: 10px; } .row.usp__section-container {gap: 0 !important; }}"],"name":"Text banner","settings":{"notification_heading_size":21,"notification_font_size":13,"vertical_spacing":30,"spacing":20,"background":"#ffffff","text_color":"#000000","text_center":false,"add_divider":false,"section_padding":"both"}},"faq_bMFeLc":{"type":"faq","blocks":{"question_GUBEmE":{"type":"question","settings":{"title":"¿ofrecéis envío gratuito?","text":"<p>¡Sí! Todos nuestros pedidos incluyen<strong>¡envío gratuito!<\/strong>No tendrás que pagar ningún coste adicional por el transporte.<\/p>"}},"question_RTmE3t":{"type":"question","settings":{"title":"¿Puedo devolver mi pedido?","text":"<p>Sí, ofrecemos 30 días para cambiar o devolver su pedido. Para más información consulta la política de devoluciones.<\/p>"}},"question_4nTTPL":{"type":"question","settings":{"title":"¿Qué métodos de pago aceptáis?","text":"<p>Aceptamos pagos con<strong>tarjetas de crédito\/débito, PayPal y otros métodos seguros<\/strong>de pago online. Todos los pagos se procesan de forma segura y cifrada.<\/p>"}},"question_34JNJc":{"type":"question","settings":{"title":"¿Cómo puedo seguir mi pedido?","text":"<p>Una vez que tu pedido sea enviado, recibirás un correo con el enlace de seguimiento. Además, puedes hacer clic en la sección<strong>“<\/strong><a href=\"\/apps\/parcelpanel\" title=\"\/apps\/parcelpanel\"><strong>Seguimiento de pedido<\/strong><\/a><strong>”<\/strong>en nuestra tienda y añadir tu número de pedido.<\/p>"}}},"block_order":["question_GUBEmE","question_RTmE3t","question_4nTTPL","question_34JNJc"],"custom_css":["h2 {color: black;}"],"name":"t:sections.faq.presets.faq.name","settings":{"title":"PREGUNTAS MÁS FRECUENTES"}},"text_banner_i86QKW":{"type":"text-banner","blocks":{"text_EqBn4W":{"type":"text","settings":{"image":"shopify:\/\/shop_images\/ICONOmarcassudorMOVIMIENTO_47301e28-b913-4088-8c72-4dc69fafd1bc.webp","heading":"Máxima flexibilidad","textarea":"<p>Ajuste cómodo con una sensación de lujo, priorizando al mismo tiempo la durabilidad.<\/p>"}},"text_wnr3Dq":{"type":"text","settings":{"image":"shopify:\/\/shop_images\/ICONOplanchaMOVIMIENTO_99b35b74-3749-4140-89fd-456ee3fb3ffe.gif","heading":"Sin arrugas","textarea":"<p>No más planchado: lavar a máquina, colgar y listo.<\/p>"}},"text_aDcPWq":{"type":"text","settings":{"image":"shopify:\/\/shop_images\/ICONOtranspirableMOVIMIENTo.webp","heading":"Transpirable y de secado rápido.","textarea":"<p>Suave y fresco todo el día.<\/p>"}},"text_Q6NpMm":{"type":"text","settings":{"image":"shopify:\/\/shop_images\/ICONOantibacterianoMOVIMIENTO_4bf8d0c1-004d-40b2-a61e-bbea89b26faf.gif","heading":"Sin olor","textarea":"<p>Neutraliza las bacterias que causan el mal olor corporal cuando sudamos.<\/p>"}}},"block_order":["text_EqBn4W","text_wnr3Dq","text_aDcPWq","text_Q6NpMm"],"settings":{"notification_heading_size":18,"notification_font_size":13,"vertical_spacing":30,"spacing":20,"background":"#ffffff","text_color":"#000000","text_center":false,"add_divider":false,"section_padding":"both"}},"product-recommendations":{"type":"product-recommendations","custom_css":[".grid-product__title {font-weight: 400 !important;}",".grid-product__price,.grid-product__price * {color: #ff0000;}","h3.section-header__title {font-size: 32px; text-align: left;}"],"settings":{"product_recommendations_heading":"AÑADE UNO CON UN 10% DE DESCUENTO","related_count":5,"products_per_row":5,"show_add_to_cart_button":true}},"judgeme_carousel_section_yMxkiw":{"type":"judgeme_carousel_section","disabled":true,"name":"Featured Review Carousel","settings":{"maxwidth":1080}},"sub":{"type":"product-full-width","disabled":true,"settings":{"max_width":true}},"rich_text_YTHqW9":{"type":"rich-text","disabled":true,"custom_css":[".text-center {margin-bottom: -54px;}"],"settings":{"align_text":"center","narrow_column":true,"divider":false}},"recently-viewed":{"type":"recently-viewed","disabled":true,"settings":{"recent_count":5}},"featured_collection_KBEd7h":{"type":"featured-collection","disabled":true,"custom_css":[".grid-product__title {font-weight: 400 !important;}","h3.section-header__title {background: #f2f2f2;}",".grid-product__price,.grid-product__price * {color: #ff0000;}","span.grid-product__price--original.e {color: black !important;}","h2.section-header__title {text-align: left;}",".featured-collection {background: #f5f5f5; padding-top: 45px;}"],"settings":{"title":"Comprar en rebajas","home_featured_products":"bestsellers","per_row":5,"rows":1,"mobile_scrollable":true,"view_all":false,"divider":false}},"collection-return":{"type":"collection-return","disabled":true,"settings":{}},"judgeme_carousel_section_myrxNj":{"type":"judgeme_carousel_section","disabled":true,"custom_css":[".cprice .grid-product__price--original.e {color: #d32f2f;}"],"name":"Featured Review Carousel","settings":{"maxwidth":1080}},"custom_moneyback_aGbEwC":{"type":"custom-moneyback","name":"Money Back Guarantee","settings":{"percentage":"77 %","headline":"GELD TERUG GARANTIE!","description":"<p>Bij Giraffi is klanttevredenheid onze topprioriteit. Als je niet helemaal tevreden bent met je aankoop, bieden we een probleemloze 14-dagen geld-terug garantie.<\/p>","marquee_items":"Sample Headline, Promotional headlines, announcement, elorem ipsum"}}},"order":["collestion_list_bar_CGzERK","main","testimonials_xAL7Em","text_and_image_dJwYik","text_and_image_LrXW8e","rich_text_bg_EpRPAq","advanced_content_wPYDwQ","social_proof_HrrAit","text_banner_zk6BgW","faq_bMFeLc","text_banner_i86QKW","product-recommendations","judgeme_carousel_section_yMxkiw","sub","rich_text_YTHqW9","recently-viewed","featured_collection_KBEd7h","collection-return","judgeme_carousel_section_myrxNj","custom_moneyback_aGbEwC"]}
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "collestion_list_bar_CGzERK": {
+      "type": "collestion-list-bar",
+      "blocks": {
+        "text_c4G48a": {
+          "type": "text",
+          "settings": {
+            "link_name": "Mujer Bestsellers",
+            "link_url": "shopify://collections/mujer-bestsellers"
+          }
+        },
+        "text_enmMhr": {
+          "type": "text",
+          "settings": {
+            "link_name": "Mujer Chaquetas",
+            "link_url": "shopify://collections/mujer-chaquetas"
+          }
+        },
+        "text_9krJeb": {
+          "type": "text",
+          "settings": {
+            "link_name": "Mujer Monos",
+            "link_url": "shopify://collections/mujer-monos"
+          }
+        },
+        "text_ncf4Ym": {
+          "type": "text",
+          "settings": {
+            "link_name": "Mujer Pantalones",
+            "link_url": "shopify://collections/mujer-pantalones"
+          }
+        },
+        "text_zFztaF": {
+          "type": "text",
+          "settings": {
+            "link_name": "Mujer Tops",
+            "link_url": "shopify://collections/mujer-tops"
+          }
+        },
+        "text_KmQ6kq": {
+          "type": "text",
+          "settings": {
+            "link_name": "Mujer Vestidos",
+            "link_url": "shopify://collections/mujer-vestidos"
+          }
+        },
+        "text_dWazy7": {
+          "type": "text",
+          "settings": {
+            "link_name": "Mujer Zapatos",
+            "link_url": "shopify://collections/mujer-zapatos"
+          }
+        },
+        "text_wyJ8kN": {
+          "type": "text",
+          "settings": {
+            "link_name": "Mujer Zapatos",
+            "link_url": "shopify://collections/mujer-zapatos"
+          }
+        },
+        "text_fQMKfq": {
+          "type": "text",
+          "settings": {
+            "link_name": "Hombres Chaquetas",
+            "link_url": "shopify://collections/chaquetas"
+          }
+        },
+        "text_n6cfG8": {
+          "type": "text",
+          "settings": {
+            "link_name": "Hombres Jerséis",
+            "link_url": "shopify://collections/jerseis"
+          }
+        },
+        "text_zPDiFk": {
+          "type": "text",
+          "settings": {
+            "link_name": "Hombres Pantalones",
+            "link_url": "shopify://collections/pantalones"
+          }
+        },
+        "text_JbcL4f": {
+          "type": "text",
+          "settings": {
+            "link_name": "Hombres Pantalones",
+            "link_url": "shopify://collections/pantalones"
+          }
+        },
+        "text_Rid8kA": {
+          "type": "text",
+          "settings": {
+            "link_name": "Hombres Tops",
+            "link_url": "shopify://collections/tops"
+          }
+        },
+        "text_q3Cr8h": {
+          "type": "text",
+          "settings": {
+            "link_name": "Hombres Zapatos",
+            "link_url": "shopify://collections/zapatos"
+          }
+        }
+      },
+      "block_order": [
+        "text_c4G48a",
+        "text_enmMhr",
+        "text_9krJeb",
+        "text_ncf4Ym",
+        "text_zFztaF",
+        "text_KmQ6kq",
+        "text_dWazy7",
+        "text_wyJ8kN",
+        "text_fQMKfq",
+        "text_n6cfG8",
+        "text_zPDiFk",
+        "text_JbcL4f",
+        "text_Rid8kA",
+        "text_q3Cr8h"
+      ],
+      "disabled": true,
+      "settings": {}
+    },
+    "main": {
+      "type": "main-product",
+      "blocks": {
+        "custom_AbG3jj": {
+          "type": "custom",
+          "name": "Rating",
+          "settings": {
+            "code": "<a href=\"#social-proofss\" class=\"rating-container\" bis_skin_checked=\"1\">\n    <img src=\"//loramuenchen.de/cdn/shop/t/3/assets/sterne.png?v=19798183704476300331744813930\" alt=\"sterne\" class=\"rating-stars\" style=\"width: 45px; height: auto; margin-right: 5px; margin-top: 5px;\">\n    <span class=\"rating-text\" style=\"font size:1px\"><strong>4.7 / 5.0</strong> basado en más de 8235 reseñas</span>  \n  </a>\n<style>\n .rating-container {\n    margin-bottom: 8px;\n    display: flex;\n    align-items: center;\n}\n    @media (max-width:749px)\n    {\n      span.rating-text {\n    font-size: 14px;\n}\n    }\n  </style>"
+          }
+        },
+        "title_T63aif": {
+          "type": "title",
+          "settings": {}
+        },
+        "price": {
+          "type": "price",
+          "settings": {}
+        },
+        "custom_tbUyXz": {
+          "type": "custom",
+          "name": "Custom Sales Point",
+          "settings": {
+            "code": "{% render 'custom-sales-point-snippet' %}"
+          }
+        },
+        "red_box_v2_tCKagT": {
+          "type": "red_box_v2",
+          "name": "RED BOX",
+          "settings": {
+            "text": "<p><strong>ÚLTIMA OPORTUNIDAD:</strong> Nuestros artículos exclusivos en oferta son limitados – hasta agotar existencias. ¡No te lo pierdas!<br/><br/><strong>Atención:</strong> Mientras puedas hacer clic en \"<strong>Agregar al carrito</strong>\", el artículo sigue disponible. No reservamos productos.</p>",
+            "bg_color": "#e53935",
+            "text_color": "#ffffff"
+          }
+        },
+        "kiwi_size_chart_recommender_kiwi_sizing_rywQVN": {
+          "type": "shopify://apps/kiwi-size-chart-recommender/blocks/kiwiSizing/b7369922-bf15-44ce-a121-a22a8fcbc4b0",
+          "settings": {
+            "product": "{{product}}",
+            "waitForElementSelector": "",
+            "waitForElementDelay": 5
+          }
+        },
+        "variant_picker_bfb7nf": {
+          "type": "variant_picker",
+          "settings": {
+            "variant_labels": true,
+            "picker_type": "button",
+            "product_dynamic_variants_enable": true,
+            "color_swatches": true
+          }
+        },
+        "size_fit_QWLeWU": {
+          "type": "size-fit",
+          "settings": {
+            "sizefit": "<div class=\"passform-labels\" bis_skin_checked=\"1\">\n<span>pequeña</span>\n<span></span>\n<span>Mediana</span>\n<span></span>\n<span>grande</span>\n</div>"
+          }
+        },
+        "buy_buttons": {
+          "type": "buy_buttons",
+          "settings": {
+            "show_dynamic_checkout": false,
+            "surface_pickup_enable": false
+          }
+        },
+        "conversion_bear_trust_badges_widget_CCQhWh": {
+          "type": "shopify://apps/conversion-bear-trust-badges/blocks/widget/163a9b59-0ec2-4cb7-bf5c-31408b4a9420",
+          "settings": {}
+        },
+        "conversion_bear_trust_badges_widget_6bKfXM": {
+          "type": "shopify://apps/conversion-bear-trust-badges/blocks/widget/163a9b59-0ec2-4cb7-bf5c-31408b4a9420",
+          "settings": {}
+        },
+        "conversion_bear_trust_badges_widget_iQqC43": {
+          "type": "shopify://apps/conversion-bear-trust-badges/blocks/widget/163a9b59-0ec2-4cb7-bf5c-31408b4a9420",
+          "settings": {}
+        },
+        "shpping_bar_CkGBN8": {
+          "type": "shpping_bar",
+          "disabled": true,
+          "settings": {}
+        },
+        "payment_icon_DQnJJj": {
+          "type": "payment_icon",
+          "disabled": true,
+          "settings": {}
+        },
+        "custom_MTyQMe": {
+          "type": "custom",
+          "settings": {
+            "code": "<div style=\"width:100%;background-color: #fdecea; color: #a94442; padding: 10px 15px; font-family: Arial, sans-serif; font-size: 14px; display: flex; align-items: center;\">\n  <span style=\"margin-right: 10px;\">🕒</span>\n  <span><strong>ACTUALIZACIÓN: ¡Stock limitado por la alta demanda durante nuestra Celebración de la Maternidad!\nQuedan pocas unidades de los productos en oferta.<strong></strong></strong></span>\n</div>"
+          }
+        },
+        "red_box_6tyYdf": {
+          "type": "red_box",
+          "disabled": true,
+          "settings": {
+            "restoration": "<p class=\"updated_text_main_p\">                              <span class=\"para\">\n                                  <strong>Restauración:</strong> Debido a la abrumadora demanda durante nuestras rebajas de invierno, nuestras existencias están casi agotadas. Una vez que este producto se agote, ya no se podrá volver a pedir. </br></br>Nota: Si todavía puede pulsar el botón  <strong> \"Añadir a la cesta\", </strong> artículos aún en stock. \n                                </span>\n</p>"
+          }
+        },
+        "description": {
+          "type": "description",
+          "settings": {
+            "is_tab": true
+          }
+        },
+        "tab_6URenV": {
+          "type": "tab",
+          "settings": {
+            "title": "Envío gratuito en toda España",
+            "content": "<p><strong>¿Te encanta comprar sin preocupaciones? </strong>¡Disfruta de envío gratis en todos tus pedidos dentro de España! Sin costes ocultos y entrega rápida. Compra ahora y recíbelo sin gastos de envío.</p>",
+            "page": ""
+          }
+        },
+        "tab_JF4BDf": {
+          "type": "tab",
+          "settings": {
+            "title": "Garantía de reembolso de 30 días",
+            "content": "<p><strong>Compra con total confianza</strong>. Si no estás satisfecho/a, te devolvemos tu dinero hasta 30 días después de la compra. ¡Sin preguntas!<br/>Explora nuestros productos sin riesgo.</p>",
+            "page": ""
+          }
+        },
+        "tab_Fcddir": {
+          "type": "tab",
+          "settings": {
+            "title": "ASISTENCIA  - SIEMPRE AQUÍ PARA TI",
+            "content": "<p>¿Necesitas ayuda o tienes preguntas? Nuestro equipo de atención al cliente está disponible 24 horas al día, 7 días a la semana, incluidos fines de semana y festivos. No importa cuándo nos necesites, ¡estaremos encantados de ayudarte!<br/><br/>Contáctanos como prefieras:<br/><br/>📧 Email: <a href=\"/pages/contact\" title=\"Contact\">info@casademodamadrid.es</a></p>",
+            "page": ""
+          }
+        },
+        "custom_9FfkWU": {
+          "type": "custom",
+          "disabled": true,
+          "settings": {
+            "code": "<div class=\"trust-box\" style=\"display: flex; align-items: center;\">\n  <img width=\"35\" height=\"35\" class=\"trust-image\" src=\"//icon-amsterdam.com/cdn/shop/files/rico-verhoeven_500x500.png?v=1704370049\" alt=\"Prueba social\" style=\"margin-right: 10px;\">\n  <div class=\"trust-box-wrapper\">\n    <p class=\"trust-text\" style=\"margin: 0;\">\n      <strong>Rico Verhoeven, Casemiro</strong> y <strong>más de 215.000</strong> personas más usan CASA DE MODA MADRID\n    </p>\n  </div>\n</div>"
+          }
+        }
+      },
+      "block_order": [
+        "custom_AbG3jj",
+        "title_T63aif",
+        "price",
+        "custom_tbUyXz",
+        "red_box_v2_tCKagT",
+        "kiwi_size_chart_recommender_kiwi_sizing_rywQVN",
+        "variant_picker_bfb7nf",
+        "size_fit_QWLeWU",
+        "buy_buttons",
+        "conversion_bear_trust_badges_widget_CCQhWh",
+        "conversion_bear_trust_badges_widget_6bKfXM",
+        "conversion_bear_trust_badges_widget_iQqC43",
+        "shpping_bar_CkGBN8",
+        "payment_icon_DQnJJj",
+        "custom_MTyQMe",
+        "red_box_6tyYdf",
+        "description",
+        "tab_6URenV",
+        "tab_JF4BDf",
+        "tab_Fcddir",
+        "custom_9FfkWU"
+      ],
+      "custom_css": [
+        ".saved_amount {display: none;}",
+        ".add-to-cart,.cart__checkout {background: black !important;}",
+        "span.product__price-savings {display: none;}"
+      ],
+      "settings": {
+        "sku_enable": false,
+        "image_position": "left",
+        "image_size": "small",
+        "product_zoom_enable": false,
+        "thumbnail_position": "below",
+        "thumbnail_height": "fixed",
+        "thumbnail_arrows": true,
+        "mobile_layout": "full",
+        "enable_video_looping": false,
+        "product_video_style": "muted"
+      }
+    },
+    "testimonials_xAL7Em": {
+      "type": "testimonials",
+      "blocks": {
+        "testimonial_GAYcq6": {
+          "type": "testimonial",
+          "settings": {
+            "icon": "5-stars",
+            "testimonial": "<p><em>Me encanta esta tienda. Pedí un vestido de verano online y llegó en solo 2 días. La tela es muy cómoda y el diseño es exactamente como en las fotos. Además, el servicio al cliente respondió rápidamente cuando tenía una duda sobre la talla. ¡100% recomendable para looks femeninos y elegantes!</em></p>",
+            "author": "Lucía Martínez ",
+            "author_info": "Barcelona, ES"
+          }
+        },
+        "testimonial_V4ggtP": {
+          "type": "testimonial",
+          "settings": {
+            "icon": "5-stars",
+            "testimonial": "<p><em>¡Compré un vestido de fiesta en Casa de Moda Madrid y quedé enamorada! La calidad es increíble y el ajuste perfecto. El equipo fue muy amable y me ayudó a elegir el modelo ideal para mi cuerpo. ¡Recibí muchos cumplidos en la boda donde lo usé! Sin duda, volveré a comprar aquí.</em></p>",
+            "author": "María González (Madrid)",
+            "author_info": "Madrid, ES"
+          }
+        },
+        "testimonial_d4UzzV": {
+          "type": "testimonial",
+          "settings": {
+            "icon": "5-stars",
+            "testimonial": "<p><em>Muy contenta con mi compra, el vestido es precioso y la atención fue excelente. Solo le pongo 4 estrellas porque me hubiera gustado más opciones de colores. Pero en general, una experiencia muy positiva. ¡Gracias, Casa de Moda Madrid!</em></p>",
+            "author": "Elena Ruiz",
+            "author_info": "Valencia, ES"
+          }
+        },
+        "testimonial_jKzc89": {
+          "type": "testimonial",
+          "settings": {
+            "icon": "5-stars",
+            "testimonial": "<p><em>¡Increíble experiencia! Visité la tienda en Madrid y me sorprendió la variedad de vestidos para ocasiones especiales. Encontré uno que se ajustaba perfectamente a mi presupuesto y estilo. La asesora, Ana, fue muy profesional y paciente. Definitivamente mi tienda favorita ahora.</em></p>",
+            "author": "Sofía López (Sevilla)",
+            "author_info": "Sevilla, ES"
+          }
+        }
+      },
+      "block_order": [
+        "testimonial_GAYcq6",
+        "testimonial_V4ggtP",
+        "testimonial_d4UzzV",
+        "testimonial_jKzc89"
+      ],
+      "disabled": true,
+      "name": "t:sections.testimonials.presets.testimonials.name",
+      "settings": {
+        "title": "Testimonials",
+        "align_text": "center",
+        "round_images": true,
+        "color_background": "#f9f9f9",
+        "color_text": "#1c1d1d"
+      }
+    },
+    "text_and_image_dJwYik": {
+      "type": "text-and-image",
+      "custom_css": [
+        "h2 {color: black;}"
+      ],
+      "name": "Storytell 1",
+      "settings": {
+        "image": "shopify://shop_images/a-softly-lit-photograph-captures-a-styli_q-YrGncSR56o4-Ssyx3FsA_cJPXAz6yQayQzP4LHhh-_g_1.png",
+        "image_mask": "none",
+        "image2_mask": "none",
+        "subtitle": "",
+        "title": "¡CELEBRAMOS CON UN MEGA-DESCUENTO!",
+        "text": "<p>¡Nuestro bebé ha llegado <strong>y queremos celebrarlo contigo!</strong> </p><p><strong>Por tiempo limitado,</strong> todos los productos tienen descuentos especiales. <strong>Date prisa:</strong> el stock vuela por la alta demanda <strong>y no queremos que te quedes sin tus favoritos.</strong></p><p><strong> ¡ÚLTIMAS UNIDADES!</strong></p><p><em>Con cariño,</em><br/><strong>Isabela y Mateo</strong><br/><em>Fundadores</em></p>",
+        "button_label": "",
+        "button_link": "",
+        "button_style": "primary",
+        "align_text": "left",
+        "image_width": "66",
+        "layout": "right",
+        "divider": false,
+        "top_padding": false,
+        "bottom_padding": false,
+        "lazyload_images": true
+      }
+    },
+    "text_and_image_LrXW8e": {
+      "type": "text-and-image",
+      "disabled": true,
+      "name": "t:sections.text-and-image.presets.image_with_text.name",
+      "settings": {
+        "image": "shopify://shop_images/O1cepLoYQaaot8miW8CGyg.webp",
+        "image_mask": "none",
+        "image2_mask": "none",
+        "subtitle": "",
+        "title": "Sobre nosotros",
+        "text": "<p>En <strong>Casa de moda madrid</strong> le brindamos una excelente experiencia de compra, ya que la satisfacción de nuestros clientes significa mucho para nosotros. Contamos con la combinación perfecta de ropa de moda adaptada a tus necesidades a través de nuestras prácticas de compra estándar. <br/><br/>Incluso si no está seguro de lo que quiere, nuestra tienda electrónica tiene varias formas de ayudarle a identificar sus necesidades. <br/><br/>Todo en<strong>Casa de moda madrid</strong> tiene que ver con nuestro compromiso de ayudarle a lucir lo mejor posible y generar confianza en usted mismo. Hemos estado en el negocio por más de un año y hemos logrado construir un negocio de buena reputación en línea. Contamos con un gran equipo y nuestro objetivo es expandir cada vez más nuestro negocio y ofrecer a nuestros clientes la mejor ropa de moda disponible. Si tiene alguna pregunta sobre nuestros productos o desea consultar la disponibilidad de un artículo, utilice la página \"Contáctenos\" para ponerse en contacto con nosotros.<br/><br/></p>",
+        "button_label": "",
+        "button_link": "",
+        "button_style": "primary",
+        "align_text": "left",
+        "image_width": "66",
+        "layout": "right",
+        "divider": false,
+        "top_padding": true,
+        "bottom_padding": true,
+        "lazyload_images": true
+      }
+    },
+    "rich_text_bg_EpRPAq": {
+      "type": "rich-text-bg",
+      "blocks": {
+        "heading_iTXiVb": {
+          "type": "heading",
+          "settings": {
+            "title": "Rich text"
+          }
+        },
+        "text_TaBeFe": {
+          "type": "text",
+          "settings": {
+            "enlarge_text": true,
+            "text": "<p>Nacimos como una marca de mujeres para mujeres, con la visión de vestir con elegancia y esencia andaluza.<br/>Ahora, con el corazón lleno de recuerdos, anunciamos nuestro cierre.Gracias por formar parte de este viaje.<br/>Para despedirnos, disfruta de un 50% de descuento en toda la colección.<br/>Nuestra tienda online seguirá abierta durante esta última etapa, con 30 días de devolución garantizada.</p><p><strong>Solera Sevilla vive en cada mujer que viste con intenc</strong></p>"
+          }
+        }
+      },
+      "block_order": [
+        "heading_iTXiVb",
+        "text_TaBeFe"
+      ],
+      "disabled": true,
+      "name": "Rich Text Background",
+      "settings": {
+        "image": "shopify://shop_images/a-natural-light-portrait-photograph-of-a_6qvObgdVQ1Kts3yytLJGBw_L1_9XZCfRXaQL-SGFksMZA_1.webp",
+        "align_text": "center",
+        "narrow_column": true,
+        "divider": false,
+        "text_color": "#ffffff"
+      }
+    },
+    "advanced_content_wPYDwQ": {
+      "type": "advanced-content",
+      "blocks": {
+        "image_mLqrmT": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/O1cepLoYQaaot8miW8CGyg.webp",
+            "link": "",
+            "width": "100%",
+            "alignment": "top-middle"
+          }
+        },
+        "liquid_HnA69V": {
+          "type": "liquid",
+          "settings": {
+            "code": "<div class=\"center-div\"><h2>Gracias por tu apoyo</h2>\n    <p>Dirigir esta tienda ha sido una experiencia increíble, llena de alegrías y desafíos. A lo largo de los años, hemos enfrentado de todo: desde exceso de inventario y dificultades financieras hasta los efectos del COVID. Incluso hemos tenido que lidiar con competidores que copiaban nuestros diseños y dejaban reseñas injustas.</p>\n    \n    <p>Mientras nos preparamos para cerrar este capítulo, estamos ofreciendo grandes descuentos para liquidar nuestro inventario restante. Despedirse nunca es fácil, pero esperamos que comprendan y apoyen nuestra decisión.</p>\n    \n    <p>Estamos profundamente agradecidos con todos ustedes que han formado parte de este camino, ya sea con un solo pedido o como clientes fieles.</p>\n    \n    <p><strong>Su apoyo ha significado el mundo para nosotros.</strong></p>\n    \n    <p>Con toda nuestra gratitud,</p>\n    <p><strong>Andrés y Sofía Cortés<br>Casa de moda madrid</strong></p></div>",
+            "width": "50%",
+            "alignment": "center"
+          }
+        }
+      },
+      "block_order": [
+        "image_mLqrmT",
+        "liquid_HnA69V"
+      ],
+      "disabled": true,
+      "name": "t:sections.advanced-content.presets.custom_content.name",
+      "settings": {
+        "full_width": false,
+        "space_around": true,
+        "lazyload_images": true
+      }
+    },
+    "social_proof_HrrAit": {
+      "type": "social-proof",
+      "name": "Social Proofs",
+      "settings": {
+        "image_prefix": "slide",
+        "image_count": 4,
+        "speed": 60
+      }
+    },
+    "text_banner_zk6BgW": {
+      "type": "text-banner",
+      "blocks": {
+        "text_7kAUxY": {
+          "type": "text",
+          "settings": {
+            "image": "shopify://shop_images/664274fcb6bb82ba2369f115_img-carriers-square-correos4.svg",
+            "heading": "Envío gratuito y rastreable",
+            "textarea": "<p>Ofrecemos envío gratuito en todos tus pedidos. El envío solo está disponible para direcciones en españa.</p>"
+          }
+        },
+        "text_W7C8NP": {
+          "type": "text",
+          "settings": {
+            "image": "shopify://shop_images/2_c275c207-2de3-4b8d-852a-b5905d5248a3.webp",
+            "heading": "garantía de devolución en 30 días",
+            "textarea": "<p>Tras recibir tu pedido, dispones en 30 días para decidir si te quedas con el producto o lo devuelves sin problemas.</p>"
+          }
+        },
+        "text_NYQyij": {
+          "type": "text",
+          "settings": {
+            "image": "shopify://shop_images/Registro_mercantil.png",
+            "heading": "Más de 20 años de experiencia",
+            "textarea": "<p>Somos una empresa de moda bien establecida desde 2003. Descubre la diferencia en calidad, servicio y confiabilidad.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "text_7kAUxY",
+        "text_W7C8NP",
+        "text_NYQyij"
+      ],
+      "disabled": true,
+      "custom_css": [
+        ".banner_text_content {max-width: 323px;}",
+        ".usp__content {gap: 10px;}",
+        "@media screen and (max-width: 740px) {.usp__content {flex-direction: column !important; text-align: center !important; margin-bottom: 10px !important; gap: 10px; } .row.usp__section-container {gap: 0 !important; }}"
+      ],
+      "name": "Text banner",
+      "settings": {
+        "notification_heading_size": 21,
+        "notification_font_size": 13,
+        "vertical_spacing": 30,
+        "spacing": 20,
+        "background": "#ffffff",
+        "text_color": "#000000",
+        "text_center": false,
+        "add_divider": false,
+        "section_padding": "both"
+      }
+    },
+    "faq_bMFeLc": {
+      "type": "faq",
+      "blocks": {
+        "question_GUBEmE": {
+          "type": "question",
+          "settings": {
+            "title": "¿ofrecéis envío gratuito?",
+            "text": "<p>¡Sí! Todos nuestros pedidos incluyen<strong>¡envío gratuito!</strong>No tendrás que pagar ningún coste adicional por el transporte.</p>"
+          }
+        },
+        "question_RTmE3t": {
+          "type": "question",
+          "settings": {
+            "title": "¿Puedo devolver mi pedido?",
+            "text": "<p>Sí, ofrecemos 30 días para cambiar o devolver su pedido. Para más información consulta la política de devoluciones.</p>"
+          }
+        },
+        "question_4nTTPL": {
+          "type": "question",
+          "settings": {
+            "title": "¿Qué métodos de pago aceptáis?",
+            "text": "<p>Aceptamos pagos con<strong>tarjetas de crédito/débito, PayPal y otros métodos seguros</strong>de pago online. Todos los pagos se procesan de forma segura y cifrada.</p>"
+          }
+        },
+        "question_34JNJc": {
+          "type": "question",
+          "settings": {
+            "title": "¿Cómo puedo seguir mi pedido?",
+            "text": "<p>Una vez que tu pedido sea enviado, recibirás un correo con el enlace de seguimiento. Además, puedes hacer clic en la sección<strong>“</strong><a href=\"/apps/parcelpanel\" title=\"/apps/parcelpanel\"><strong>Seguimiento de pedido</strong></a><strong>”</strong>en nuestra tienda y añadir tu número de pedido.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "question_GUBEmE",
+        "question_RTmE3t",
+        "question_4nTTPL",
+        "question_34JNJc"
+      ],
+      "custom_css": [
+        "h2 {color: black;}"
+      ],
+      "name": "t:sections.faq.presets.faq.name",
+      "settings": {
+        "title": "PREGUNTAS MÁS FRECUENTES"
+      }
+    },
+    "text_banner_i86QKW": {
+      "type": "text-banner",
+      "blocks": {
+        "text_EqBn4W": {
+          "type": "text",
+          "settings": {
+            "image": "shopify://shop_images/ICONOmarcassudorMOVIMIENTO_47301e28-b913-4088-8c72-4dc69fafd1bc.webp",
+            "heading": "Máxima flexibilidad",
+            "textarea": "<p>Ajuste cómodo con una sensación de lujo, priorizando al mismo tiempo la durabilidad.</p>"
+          }
+        },
+        "text_wnr3Dq": {
+          "type": "text",
+          "settings": {
+            "image": "shopify://shop_images/ICONOplanchaMOVIMIENTO_99b35b74-3749-4140-89fd-456ee3fb3ffe.gif",
+            "heading": "Sin arrugas",
+            "textarea": "<p>No más planchado: lavar a máquina, colgar y listo.</p>"
+          }
+        },
+        "text_aDcPWq": {
+          "type": "text",
+          "settings": {
+            "image": "shopify://shop_images/ICONOtranspirableMOVIMIENTo.webp",
+            "heading": "Transpirable y de secado rápido.",
+            "textarea": "<p>Suave y fresco todo el día.</p>"
+          }
+        },
+        "text_Q6NpMm": {
+          "type": "text",
+          "settings": {
+            "image": "shopify://shop_images/ICONOantibacterianoMOVIMIENTO_4bf8d0c1-004d-40b2-a61e-bbea89b26faf.gif",
+            "heading": "Sin olor",
+            "textarea": "<p>Neutraliza las bacterias que causan el mal olor corporal cuando sudamos.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "text_EqBn4W",
+        "text_wnr3Dq",
+        "text_aDcPWq",
+        "text_Q6NpMm"
+      ],
+      "settings": {
+        "notification_heading_size": 18,
+        "notification_font_size": 13,
+        "vertical_spacing": 30,
+        "spacing": 20,
+        "background": "#ffffff",
+        "text_color": "#000000",
+        "text_center": false,
+        "add_divider": false,
+        "section_padding": "both"
+      }
+    },
+    "product-recommendations": {
+      "type": "product-recommendations",
+      "custom_css": [
+        ".grid-product__title {font-weight: 400 !important;}",
+        ".grid-product__price,.grid-product__price * {color: #ff0000;}",
+        "h3.section-header__title {font-size: 32px; text-align: left;}"
+      ],
+      "settings": {
+        "product_recommendations_heading": "AÑADE UNO CON UN 10% DE DESCUENTO",
+        "related_count": 5,
+        "products_per_row": 5,
+        "show_add_to_cart_button": true
+      }
+    },
+    "judgeme_carousel_section_yMxkiw": {
+      "type": "judgeme_carousel_section",
+      "disabled": true,
+      "name": "Featured Review Carousel",
+      "settings": {
+        "maxwidth": 1080
+      }
+    },
+    "sub": {
+      "type": "product-full-width",
+      "disabled": true,
+      "settings": {
+        "max_width": true
+      }
+    },
+    "rich_text_YTHqW9": {
+      "type": "rich-text",
+      "disabled": true,
+      "custom_css": [
+        ".text-center {margin-bottom: -54px;}"
+      ],
+      "settings": {
+        "align_text": "center",
+        "narrow_column": true,
+        "divider": false
+      }
+    },
+    "recently-viewed": {
+      "type": "recently-viewed",
+      "disabled": true,
+      "settings": {
+        "recent_count": 5
+      }
+    },
+    "featured_collection_KBEd7h": {
+      "type": "featured-collection",
+      "disabled": true,
+      "custom_css": [
+        ".grid-product__title {font-weight: 400 !important;}",
+        "h3.section-header__title {background: #f2f2f2;}",
+        ".grid-product__price,.grid-product__price * {color: #ff0000;}",
+        "span.grid-product__price--original.e {color: black !important;}",
+        "h2.section-header__title {text-align: left;}",
+        ".featured-collection {background: #f5f5f5; padding-top: 45px;}"
+      ],
+      "settings": {
+        "title": "Comprar en rebajas",
+        "home_featured_products": "bestsellers",
+        "per_row": 5,
+        "rows": 1,
+        "mobile_scrollable": true,
+        "view_all": false,
+        "divider": false
+      }
+    },
+    "collection-return": {
+      "type": "collection-return",
+      "disabled": true,
+      "settings": {}
+    },
+    "judgeme_carousel_section_myrxNj": {
+      "type": "judgeme_carousel_section",
+      "disabled": true,
+      "custom_css": [
+        ".cprice .grid-product__price--original.e {color: #d32f2f;}"
+      ],
+      "name": "Featured Review Carousel",
+      "settings": {
+        "maxwidth": 1080
+      }
+    },
+    "custom_moneyback_aGbEwC": {
+      "type": "custom-moneyback",
+      "name": "Money Back Guarantee",
+      "settings": {
+        "percentage": "77 %",
+        "headline": "GELD TERUG GARANTIE!",
+        "description": "<p>Bij Giraffi is klanttevredenheid onze topprioriteit. Als je niet helemaal tevreden bent met je aankoop, bieden we een probleemloze 14-dagen geld-terug garantie.</p>",
+        "marquee_items": "Sample Headline, Promotional headlines, announcement, elorem ipsum"
+      }
+    }
+  },
+  "order": [
+    "collestion_list_bar_CGzERK",
+    "main",
+    "testimonials_xAL7Em",
+    "text_and_image_dJwYik",
+    "text_and_image_LrXW8e",
+    "rich_text_bg_EpRPAq",
+    "advanced_content_wPYDwQ",
+    "social_proof_HrrAit",
+    "text_banner_zk6BgW",
+    "faq_bMFeLc",
+    "text_banner_i86QKW",
+    "product-recommendations",
+    "judgeme_carousel_section_yMxkiw",
+    "sub",
+    "rich_text_YTHqW9",
+    "recently-viewed",
+    "featured_collection_KBEd7h",
+    "collection-return",
+    "judgeme_carousel_section_myrxNj",
+    "custom_moneyback_aGbEwC"
+  ]
+}
