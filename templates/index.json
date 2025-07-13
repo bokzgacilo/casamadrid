@@ -192,7 +192,9 @@
       "name": "Collection Carousel",
       "settings": {
         "collection": "mujer-bestsellers",
-        "max_products": 10
+        "max_products": 14,
+        "collection_label": "Featured Collection",
+        "collection_title": "Default Title"
       }
     },
     "faq_Xcn63c": {
