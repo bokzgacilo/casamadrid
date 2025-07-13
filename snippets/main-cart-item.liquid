@@ -3,12 +3,18 @@
     {% if product.image != blank %}
       <a href="{{ product.url }}" style="height: 0; padding-bottom: {{ 100 | divided_by: product.image.aspect_ratio }}%;">
         {%- render 'image-element'
-          , img: product
-          , alt: product.product.title
-          , widths: '180, 360, 540'
-          , sizes: sizes
-          , sizeVariable: sizeVariable
-          , fallback: fallback
+          ,
+ img: product
+          ,
+ alt: product.product.title
+          ,
+ widths: '180, 360, 540'
+          ,
+ sizes: sizes
+          ,
+ sizeVariable: sizeVariable
+          ,
+ fallback: fallback
           ,
         -%}
       </a>
@@ -134,6 +140,7 @@
               {%- endif -%}
             </span>
           {%- endcapture -%}
+
           <div class="product__unit-price">{{ product.unit_price | money }}/{{ unit_price_base_unit }}</div>
         {%- endif -%}
       </div>

@@ -1,30 +1,111 @@
-<div class="page-width page-content">
+<style>
+  .total-price {
+    margin: 1rem 0;
+    display: flex;
+    flex-direction: row;
+  }
+
+  .total-price > p {
+    font-size: 24px;
+  }
+
+  .cart-progress-bar-wrapper {
+    width: 40%;
+  }
+
+  @media (max-width: 767px) {
+    .cart-progress-bar-wrapper {
+      width: 100%;
+    }
+
+    .cart-progress-bar-wrapper > .discount-progress {
+      padding: 0;
+    }
+  }
+
+  .cart-progress-bar-wrapper > .discount-progress {
+    background-color: #fff;
+    border: none;
+  }
+
+</style>
+<script>
+  function formatMoney(cents) {
+    // Optional: format with currency symbol
+    return (cents / 100).toLocaleString('en-US', {
+      style: 'currency',
+      currency: '{{ shop.currency }}'
+    });
+  }
+
+  function updateOriginalTotal() {
+    fetch('/cart.js')
+      .then(res => res.json())
+      .then(cart => {
+        let originalTotal = 0;
+        cart.items.forEach(item => {
+          originalTotal += item.original_line_price;
+        });
+
+        const el = document.querySelector('[data-original-total]');
+        if (el) el.textContent = formatMoney(originalTotal);
+      });
+  }
+
+  updateOriginalTotal();
+
+  document.addEventListener('click', function (e) {
+    if (e.target.matches('[data-qty-increase], [data-qty-decrease]')) {
+      // wait a moment if qty is being updated via JS
+      // setTimeout(updateOriginalTotal, 300);
+      console.log('changes')
+    }
+  });
+</script>
+<div class="page-width">
 
   {%- render 'breadcrumbs' -%}
 
-  <header class="section-header text-center{% if cart.item_count == 0 %} section-header--404{% endif %}">
+  <header class="section-header text-center{% if cart.item_count == 0 %} section-header--404{% endif %}" style="display: flex; flex-direction: column; align-items: center;">
     <h1 class="section-header__title">{{ 'cart.general.title' | t }}</h1>
-    <div class="rte text-spacing">
-      {%- if cart.item_count == 0 -%}
-        <p>{{ 'cart.general.empty' | t }}</p>
-      {%- endif -%}
-      <p>{{ 'cart.general.continue_browsing_html' | t: url: routes.all_products_collection_url }}</p>
+    <div class="cart-progress-bar-wrapper">
+      {% render 'discount-progress-bar' %}
     </div>
+  {% comment %} <div class="rte text-spacing">
+                                                          {%- if cart.item_count == 0 -%}
+                                                            <p>{{ 'cart.general.empty' | t }}</p>
+                                                          {%- endif -%}
+                                                          <p>{{ 'cart.general.continue_browsing_html' | t: url: routes.all_products_collection_url }}</p>
+                            </div> {% endcomment %}
   </header>
 
   {%- if cart.item_count > 0 -%}
-    <form action="{{ routes.cart_url }}" method="post" novalidate data-location="page" id="CartPageForm">
+    <form
+      action="{{ routes.cart_url }}"
+      method="post"
+      novalidate
+      data-location="page"
+      id="CartPageForm">
       <div class="cart__page">
         <div data-products class="cart__page-col">
+          {% assign original_total = 0 %}
+
           {% for item in cart.items %}
-            {%- render 'cart-item', product: item, sizes: '150px', -%}
+            {% assign original_total = original_total | plus: item.original_line_price %}
+            {%- render 'main-cart-item'
+              , product: item
+              , sizes: '150px'
+              , -%}
           {%- endfor -%}
         </div>
         <div class="cart__page-col">
           {% if settings.cart_notes_enable %}
             <div>
               <label for="CartNote">{{ 'cart.general.note' | t }}</label>
-              <textarea name="note" class="input-full cart-notes" id="CartNote">{{ cart.note }}</textarea>
+              <textarea
+                name="note"
+                class="input-full cart-notes"
+                id="CartNote">{{ cart.note }}</textarea>
             </div>
           {% endif %}
 
@@ -43,14 +124,28 @@
             {% endif %}
           </div>
 
+
           <div class="cart__item-sub cart__item-row">
             <div>{{ 'cart.general.subtotal' | t }}</div>
             <div data-subtotal>{{ cart.total_price | money }}</div>
           </div>
+          <div class="cart__item-sub cart__item-row total-price">
+            <p>Original Total</p>
+            <p data-original-total>{{ original_total | money }}</p>
+          </div>
+          <div class="cart__item-sub cart__item-row">
+            <p style="margin: 0;">
+              <a href="" style="text-decoration: underline;">Shipping</a>
+              calculated at checkout
+            </p>
+          </div>
 
           {% if settings.cart_terms_conditions_enable %}
             <div class="cart__item-row cart__terms">
-              <input type="checkbox" id="CartTerms" class="cart__terms-checkbox">
+              <input
+                type="checkbox"
+                id="CartTerms"
+                class="cart__terms-checkbox">
               <label for="CartTerms">
                 {% if settings.cart_terms_conditions_page != blank %}
                   {{ 'cart.general.terms_html' | t: url: settings.cart_terms_conditions_page.url }}
@@ -62,7 +157,12 @@
           {% endif %}
 
           <div class="cart__item-row cart__checkout-wrapper">
-            <button type="submit" name="checkout" data-terms-required="{{ settings.cart_terms_conditions_enable }}" class="btn cart__checkout">
+            <button
+              style="padding: 1rem;"
+              type="submit"
+              name="checkout"
+              data-terms-required="{{ settings.cart_terms_conditions_enable }}"
+              class="btn cart__checkout">
               {{ 'cart.general.checkout' | t }}
             </button>
 
@@ -73,7 +173,7 @@
 
           <div class="cart__item-row text-center">
             <small>
-              {{ 'cart.general.shipping_at_checkout' | t }}<br />
+              {{ 'cart.general.shipping_at_checkout' | t }}<br/>
             </small>
           </div>
         </div>
@@ -83,7 +183,7 @@
 </div>
 
 {% schema %}
-{
-  "name": "t:sections.main-cart.name"
-}
+  {
+    "name": "t:sections.main-cart.name"
+  }
 {% endschema %}

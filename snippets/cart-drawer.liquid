@@ -15,7 +15,33 @@
   }
 </style>
 
-{% comment %} <script>
+<script>
+   function COMPUTE_ORIGINAL_PRICE() {
+    const total_original = document.getElementById('original-cart-total');
+    fetch('/cart.js')
+      .then(response => response.json())
+      .then(cart => {
+        let totalCompareAt = 0;
+        cart.items.forEach(item => {
+          const handle = item.handle; // available from /cart.js
+          const variantId = item.variant_id;
+          const quantity = item.quantity || 1;
+          fetch(`/products/${handle}.js`)
+          .then(res => res.json())
+          .then(product => {
+            const variant = product.variants.find(v => v.id === variantId);
+            const compareAt = variant?.compare_at_price || 0;
+            const lineTotal = (compareAt * quantity) / 100;
+            totalCompareAt += lineTotal;
+            total_original.innerText = `€${totalCompareAt.toFixed(2)}`;
+          });
+        });
+      })
+      .catch(error => {
+        console.error('Failed to fetch cart:', error);
+      });
+  }
+  
   document.addEventListener('DOMContentLoaded', function () {
     COMPUTE_ORIGINAL_PRICE();
   });
@@ -23,7 +49,7 @@
   ['cart:updated', 'cartdrawer:opened', 'ajaxProduct:added', 'ajaxProduct:error'].forEach(event => document.addEventListener(event, e => {
     COMPUTE_ORIGINAL_PRICE();
   }));
-</script> {% endcomment %}
+</script>
 
 {%- if settings.cart_type == 'drawer' -%}
   <div id="CartDrawer" class="drawer drawer--right">
@@ -104,12 +130,9 @@
             <span id="original-cart-total" style="color: red; text-decoration: line-through; font-weight: bold; margin-right: 10px;">
               0
             </span>
-            <span id="original-sub-total" style="color: green; font-weight: bold;">
-              {% comment %} {{ cart.total_price | money }} {% endcomment %} 0
-            </span>
-            {% comment %} <span id="original-sub-total" data-subtotal style="color: green; font-weight: bold;">
+            <span data-subtotal style="color: green; font-weight: bold;">
               {{ cart.total_price | money }}
-            </span> {% endcomment %}
+            </span>
             
             
             </div>
