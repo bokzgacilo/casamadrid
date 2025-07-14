@@ -1,6 +1,68 @@
+{% comment %}
+  This section displays a selected product's image, title, and description.
+  It's designed to be added to any Shopify theme.
+{% endcomment %}
+
+<section class="product-data-section py-8 px-4 sm:px-6 lg:px-8 bg-gray-100 rounded-lg shadow-md mb-8">
+  <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-8">
+    {% if section.settings.selected_product != blank %}
+      {% assign product = all_products[section.settings.selected_product] %}
+
+      <div class="product-image-container w-full md:w-1/2 flex justify-center">
+        {% if product.featured_image %}
+          <img
+            src="{{ product.featured_image | img_url: 'large' }}"
+            alt="{{ product.featured_image.alt | escape }}"
+            class="w-full max-w-md h-auto rounded-lg shadow-lg object-cover"
+            loading="lazy"
+            onerror="this.onerror=null;this.src='https://placehold.co/600x600/cccccc/333333?text=Product+Image';"
+          >
+        {% else %}
+          <img
+            src="https://placehold.co/600x600/cccccc/333333?text=No+Image"
+            alt="Placeholder image"
+            class="w-full max-w-md h-auto rounded-lg shadow-lg object-cover"
+          >
+        {% endif %}
+      </div>
+
+      <div class="product-details-container w-full md:w-1/2 text-center md:text-left">
+        {% if section.settings.heading != blank %}
+          <h2 class="text-4xl font-extrabold text-gray-900 mb-4">{{ section.settings.heading | escape }}</h2>
+        {% endif %}
+
+        <h3 class="text-3xl font-bold text-gray-800 mb-2">{{ product.title | escape }}</h3>
+
+        {% if product.description != blank %}
+          <div class="text-gray-700 text-lg leading-relaxed mb-4">
+            {{ product.description | strip_html | truncatewords: 50 }}
+          </div>
+        {% endif %}
+
+        <a href="{{ product.url | within: collection }}" class="inline-block bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 px-6 rounded-full shadow-lg transition duration-300 ease-in-out transform hover:scale-105">
+          View Product
+        </a>
+      </div>
+    {% else %}
+      <div class="w-full text-center text-gray-600 p-8 border-2 border-dashed border-gray-300 rounded-lg">
+        <p class="text-xl font-semibold mb-2">No product selected.</p>
+        <p>Please select a product in the section settings to display its data.</p>
+      </div>
+    {% endif %}
+  </div>
+</section>
+
 {% schema %}
   {
-    "name": "Section name",
-    "settings": []
+    "name": "Product Data Section",
+    "settings": [
+      
+    ],
+    "presets": [
+      {
+        "name": "Product Data Section",
+        "category": "Product"
+      }
+    ]
   }
 {% endschema %}
