@@ -423,9 +423,10 @@
           <div id="kiwi-sizing-placeholder"></div>
           <button class='custom-add-to-cart-confirm' onclick="confirmAddToCart()">Add to Cart</button>
         `;
+        waitForKiwiAndLoad(product);
+        
         document.querySelector('.product-drawer').classList.add('open');
         document.getElementById('product-overlay').classList.add('active');
-        waitForKiwiAndLoad(product);
       });
         }
 
