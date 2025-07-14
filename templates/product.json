@@ -575,6 +575,26 @@
         "section_padding": "both"
       }
     },
+    "hero_video_qdik8T": {
+      "type": "hero-video",
+      "custom_css": [
+        "h2{color:white;}"
+      ],
+      "name": "t:sections.hero-video.presets.video_hero.name",
+      "settings": {
+        "title": "CASA DE MODA",
+        "title_size": 40,
+        "subheading": "",
+        "link_text": "",
+        "link": "",
+        "color_accent": "rgba(0,0,0,0)",
+        "text_align": "vertical-center horizontal-center",
+        "video_url": "https://cdn.shopify.com/videos/c/o/v/7e72a28dc5dc4f59a006d86c4470eb7e.mp4",
+        "overlay_opacity": 0,
+        "section_height": "450px",
+        "mobile_height": "300px"
+      }
+    },
     "product-recommendations": {
       "type": "product-recommendations",
       "custom_css": [
@@ -687,24 +707,6 @@
         "content_width": 120,
         "border_thickness": 0,
         "lazy": true
-      }
-    },
-    "hero_video_qdik8T": {
-      "type": "hero-video",
-      "custom_css": [],
-      "name": "t:sections.hero-video.presets.video_hero.name",
-      "settings": {
-        "title": "Bring your",
-        "title_size": 40,
-        "subheading": "",
-        "link_text": "",
-        "link": "",
-        "color_accent": "rgba(0,0,0,0)",
-        "text_align": "vertical-center horizontal-center",
-        "video_url": "https://cdn.shopify.com/videos/c/o/v/7e72a28dc5dc4f59a006d86c4470eb7e.mp4",
-        "overlay_opacity": 0,
-        "section_height": "450px",
-        "mobile_height": "300px"
       }
     },
     "judgeme_carousel_section_yMxkiw": {
