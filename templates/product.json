@@ -577,8 +577,9 @@
     },
     "hero_video_qdik8T": {
       "type": "hero-video",
+      "disabled": true,
       "custom_css": [
-        "h2{color:white;}"
+        "h2 {color: white;}"
       ],
       "name": "t:sections.hero-video.presets.video_hero.name",
       "settings": {
