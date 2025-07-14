@@ -691,7 +691,6 @@
     },
     "hero_video_qdik8T": {
       "type": "hero-video",
-      "disabled": true,
       "custom_css": [],
       "name": "t:sections.hero-video.presets.video_hero.name",
       "settings": {
@@ -702,9 +701,9 @@
         "link": "",
         "color_accent": "rgba(0,0,0,0)",
         "text_align": "vertical-center horizontal-center",
-        "video_url": "https://www.youtube.com/watch?v=_9VUPq3SxOc",
+        "video_url": "https://cdn.shopify.com/videos/c/o/v/7e72a28dc5dc4f59a006d86c4470eb7e.mp4",
         "overlay_opacity": 0,
-        "section_height": "650px",
+        "section_height": "450px",
         "mobile_height": "300px"
       }
     },
@@ -801,9 +800,9 @@
     "text_banner_zk6BgW",
     "faq_bMFeLc",
     "text_banner_i86QKW",
+    "hero_video_qdik8T",
     "product-recommendations",
     "ss_scroling_images_merGnm",
-    "hero_video_qdik8T",
     "judgeme_carousel_section_yMxkiw",
     "sub",
     "rich_text_YTHqW9",
