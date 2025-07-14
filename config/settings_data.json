@@ -79,6 +79,7 @@
     "cart_additional_buttons": false,
     "cart_notes_enable": false,
     "cart_terms_conditions_enable": false,
+    "enable_upsell": true,
     "upsell_collection": "bestsellers",
     "enable_shipping_protection": true,
     "shipping_protection_product": "proteccion-del-envio",
