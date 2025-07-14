@@ -419,7 +419,7 @@
           <button class="close-drawer" onclick="closeProductDrawer()">Close</button>
           <img src="${product.images[0]}" alt="${product.title}" loading='eager'/>
           <h2>${product.title}</h2>
-        
+          {% section 'add-to-cart-modal' %}
           ${pickersHTML}
         
           <button class='custom-add-to-cart-confirm' onclick="confirmAddToCart()">Add to Cart</button>
@@ -753,6 +753,6 @@
       });
     </script>
 
-  {% section 'add-to-cart-modal' %}
+  
   </body>
 </html>
