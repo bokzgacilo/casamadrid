@@ -403,6 +403,9 @@
           }
           
          function openProductDrawer(productId) {
+            event.preventDefault(); // stop button from submitting or reloading
+    event.stopPropagation(); // prevent the <a> from being triggered
+      
            fetch(window.Shopify.routes.root + `products/${productId}.js`)
       .then(response => response.json())
       .then(product => {
