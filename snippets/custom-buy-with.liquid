@@ -8,7 +8,7 @@
     <button id="carousel-next">Next</button> -->
   </div>
   <div class="buy-with-products">
-    {% for product in sorted_products %}
+    {% for product in sorted_products limit: 8 %}
       {% render 'product-grid-item'
         , product: product %}
     {% endfor %}
