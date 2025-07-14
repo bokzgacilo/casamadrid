@@ -423,23 +423,29 @@
           <div id="kiwi-sizing-placeholder"></div>
           <button class='custom-add-to-cart-confirm' onclick="confirmAddToCart()">Add to Cart</button>
         `;
-        const elementToInject = document.getElementById('kiwi-sizing-placeholder');
-        document.querySelector('.product-drawer').classList.add('open');
-        document.getElementById('product-overlay').classList.add('active');
-        window.ks.loadSizing({
-          productData: product,
-          options: {
-            el: elementToInject,
-            displayMode: 0, // display size chart inline
-          },
-          loaded: function(success) {
-            // if success == True, means there are size charts successfully loaded for the given product data.
-        
-            // This flag is useful to remove the placeholder content (i.e. tabs) in the event when there's no size charts loaded
-          },
-        });
+        waitForKiwiAndLoad(product);
       });
         }
+
+      function waitForKiwiAndLoad(product) {
+  const placeholder = document.getElementById('kiwi-sizing-placeholder');
+  const interval = setInterval(() => {
+    if (window.ks && typeof window.ks.loadSizing === 'function') {
+      clearInterval(interval);
+
+      window.ks.loadSizing({
+        productData: product,
+        options: {
+          el: placeholder,
+          displayMode: 0, // inline
+        },
+        loaded: function (success) {
+          console.log("KiwiSizing loaded:", success);
+        }
+      });
+    }
+  }, 100); // checks every 100ms
+}
           
         function closeProductDrawer() {
           currentDrawerProduct = null;
