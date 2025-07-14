@@ -688,6 +688,24 @@
         "lazy": true
       }
     },
+    "hero_video_qdik8T": {
+      "type": "hero-video",
+      "custom_css": [],
+      "name": "t:sections.hero-video.presets.video_hero.name",
+      "settings": {
+        "title": "Bring your",
+        "title_size": 40,
+        "subheading": "",
+        "link_text": "",
+        "link": "",
+        "color_accent": "rgba(0,0,0,0)",
+        "text_align": "vertical-center horizontal-center",
+        "video_url": "https://www.youtube.com/watch?v=_9VUPq3SxOc",
+        "overlay_opacity": 0,
+        "section_height": "650px",
+        "mobile_height": "300px"
+      }
+    },
     "judgeme_carousel_section_yMxkiw": {
       "type": "judgeme_carousel_section",
       "disabled": true,
@@ -763,7 +781,6 @@
       "type": "custom-moneyback",
       "name": "Money Back Guarantee",
       "settings": {
-        "percentage": "77 %",
         "headline": "GELD TERUG GARANTIE!",
         "description": "<p>Bij Giraffi is klanttevredenheid onze topprioriteit. Als je niet helemaal tevreden bent met je aankoop, bieden we een probleemloze 14-dagen geld-terug garantie.</p>",
         "marquee_items": "Sample Headline, Promotional headlines, announcement, elorem ipsum"
@@ -784,6 +801,7 @@
     "text_banner_i86QKW",
     "product-recommendations",
     "ss_scroling_images_merGnm",
+    "hero_video_qdik8T",
     "judgeme_carousel_section_yMxkiw",
     "sub",
     "rich_text_YTHqW9",
