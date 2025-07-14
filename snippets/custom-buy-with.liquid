@@ -4,8 +4,12 @@
 <div class="buy-with-container">
   <div class="buy-with-header">
     <h3>Buy With</h3>
-    <button id="carousel-prev">Prev</button>
-    <button id="carousel-next">Next</button>
+    <button id="carousel-prev"><svg role="presentation" focusable="false" width="5" height="8" class="icon icon-chevron-left-small reverse-icon" viewBox="0 0 5 8">
+        <path d="m4.25 7-3-3 3-3" fill="none" stroke="currentColor" stroke-width="1.5"></path>
+      </svg></button>
+    <button id="carousel-next"><svg role="presentation" focusable="false" width="5" height="8" class="icon icon-chevron-right-small reverse-icon" viewBox="0 0 5 8">
+        <path d="m.75 7 3-3-3-3" fill="none" stroke="currentColor" stroke-width="1.5"></path>
+      </svg></button>
   </div>
   <div class="buy-with-products">
     {% for product in sorted_products limit: 8 %}
