@@ -1,4 +1,5 @@
 {% assign all_products = collections['mujer-bestsellers'].products %}
+{% assign sorted_products = all_products | sort: 'title' %} {# simulate "random" #}
 
 <div class="buy-with-container">
   <div class="buy-with-header">
@@ -7,7 +8,7 @@
     <button id="carousel-next">Next</button>
   </div>
   <div class="buy-with-products">
-    {% for product in all_products %}
+    {% for product in sorted_products %}
       {% render 'product-grid-item'
         , product: product %}
     {% endfor %}
