@@ -643,7 +643,7 @@
         "heading_size": 40,
         "heading_height": 130,
         "heading_align": "center",
-        "slider_speed": 13,
+        "slider_speed": 20,
         "slider_gap": 10,
         "slider_gap_mobile": 10,
         "slider_mt": 50,
