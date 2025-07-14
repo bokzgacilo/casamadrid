@@ -37,6 +37,32 @@
         <a href="{{ product.url | within: collection }}" class="inline-block bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 px-6 rounded-full shadow-lg transition duration-300 ease-in-out transform hover:scale-105">
           View Product
         </a>
+
+        <!-- App blocks start here -->
+        <div class="mt-8 space-y-4">
+          {% for block in section.blocks %}
+            {% case block.type %}
+              {% when 'text' %}
+                <div class="text-gray-700 text-base">{{ block.settings.text }}</div>
+
+              {% when 'button' %}
+                <a href="{{ block.settings.button_link }}" class="inline-block bg-green-600 hover:bg-green-700 text-white font-semibold py-2 px-5 rounded shadow transition duration-200">
+                  {{ block.settings.button_label }}
+                </a>
+
+              {% when 'image' %}
+                {% if block.settings.image != blank %}
+                  <img src="{{ block.settings.image | img_url: 'medium' }}" alt="{{ block.settings.image.alt | escape }}" class="w-full max-w-xs mx-auto md:mx-0 rounded-lg shadow" />
+                {% endif %}
+
+              {% when 'heading' %}
+                <h4 class="text-2xl font-semibold text-gray-900">{{ block.settings.heading_text }}</h4>
+
+              {% else %}
+                <!-- Unknown block -->
+            {% endcase %}
+          {% endfor %}
+        </div>
       </div>
     {% else %}
       <div class="w-full text-center text-gray-600 p-8 border-2 border-dashed border-gray-300 rounded-lg">
@@ -48,16 +74,90 @@
 </section>
 
 {% schema %}
-  {
-    "name": "Product Data Section",
-    "settings": [
-      
-    ],
-    "presets": [
-      {
-        "name": "Product Data Section",
-        "category": "Product"
-      }
-    ]
-  }
+{
+  "name": "Custom Product Modal",
+  "settings": [
+    {
+      "type": "product",
+      "id": "selected_product",
+      "label": "Select Product"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Check out this product"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "heading",
+      "name": "Heading",
+      "settings": [
+        {
+          "type": "text",
+          "id": "heading_text",
+          "label": "Heading text",
+          "default": "Feature Title"
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "name": "Text",
+      "settings": [
+        {
+          "type": "textarea",
+          "id": "text",
+          "label": "Content",
+          "default": "This is a description or feature detail."
+        }
+      ]
+    },
+    {
+      "type": "image",
+      "name": "Image",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Upload Image"
+        }
+      ]
+    },
+    {
+      "type": "button",
+      "name": "Button",
+      "settings": [
+        {
+          "type": "text",
+          "id": "button_label",
+          "label": "Button label",
+          "default": "Learn More"
+        },
+        {
+          "type": "url",
+          "id": "button_link",
+          "label": "Button link"
+        }
+      ]
+    }
+  ],
+  "max_blocks": 10,
+  "presets": [
+    {
+      "name": "Product Data with App Blocks",
+      "category": "Product",
+      "settings": {},
+      "blocks": [
+        {
+          "type": "heading"
+        },
+        {
+          "type": "text"
+        }
+      ]
+    }
+  ]
+}
 {% endschema %}
