@@ -623,6 +623,7 @@
         "image_Nzf9Gw": {
           "type": "image",
           "settings": {
+            "image": "shopify://shop_images/2_5b56bb81-ac4b-421a-a860-2d6defe56bc8.png",
             "url": ""
           }
         }
@@ -634,7 +635,6 @@
         "image_t4BVTJ",
         "image_Nzf9Gw"
       ],
-      "disabled": true,
       "name": "SS - Scrolling Images",
       "settings": {
         "heading": "",
@@ -643,7 +643,7 @@
         "heading_size": 40,
         "heading_height": 130,
         "heading_align": "center",
-        "slider_speed": 20,
+        "slider_speed": 30,
         "slider_gap": 10,
         "slider_gap_mobile": 10,
         "slider_mt": 50,
