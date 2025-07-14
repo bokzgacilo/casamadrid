@@ -338,25 +338,6 @@
       return html;
           }
 
-      //     const htmlElement = document.documentElement; // <html> element
-
-      //     const observer = new MutationObserver(mutations => {
-      // mutations.forEach(mutation => {
-      //   if (
-      //     mutation.type === 'attributes' &&
-      //     mutation.attributeName === 'class' &&
-      //     htmlElement.classList.contains('js-drawer-open')
-      //   ) {
-      //     updateCartState()
-      //   }
-      // });
-      //     });
-
-      //     observer.observe(htmlElement, {
-      // attributes: true,
-      // attributeFilter: ['class']
-      //     });
-
           function COMPUTE_ORIGINAL_PRICE() {
       console.log('compute prices')
 
@@ -403,53 +384,7 @@
       );
           }
           
-         function openProductDrawer(productId) {
-            event.preventDefault(); // stop button from submitting or reloading
-    event.stopPropagation(); // prevent the <a> from being triggered
-      
-           fetch(window.Shopify.routes.root + `products/${productId}.js`)
-      .then(response => response.json())
-      .then(product => {
-        currentDrawerProduct = product;
-
-        const drawerBody = document.getElementById('drawer-body');
-
-        const pickersHTML = renderOptionPickers(product.options);
-        
-        drawerBody.innerHTML = `
-          <button class="close-drawer" onclick="closeProductDrawer()">Close</button>
-          <img src="${product.images[0]}" alt="${product.title}" loading='eager'/>
-          <h2>${product.title}</h2>
-          ${pickersHTML}
-          <div id="kiwi-sizing-placeholder"></div>
-          <button class='custom-add-to-cart-confirm' onclick="confirmAddToCart()">Add to Cart</button>
-        `;
-        waitForKiwiAndLoad(product);
-        
-        document.querySelector('.product-drawer').classList.add('open');
-        document.getElementById('product-overlay').classList.add('active');
-      });
-        }
-
-      function waitForKiwiAndLoad(product) {
-  const placeholder = document.getElementById('kiwi-sizing-placeholder');
-  const interval = setInterval(() => {
-    if (window.ks && typeof window.ks.loadSizing === 'function') {
-      clearInterval(interval);
-
-      window.ks.loadSizing({
-        productData: product,
-        options: {
-          el: placeholder,
-          displayMode: 0, // inline
-        },
-        loaded: function (success) {
-          console.log("KiwiSizing loaded:", success);
-        }
-      });
-    }
-  }, 100); // checks every 100ms
-}
+         
           
         function closeProductDrawer() {
           currentDrawerProduct = null;
@@ -782,6 +717,42 @@
     
     ks.setShopID("xjzpe1-k1.myshopify.com");
 
-    console.log(ks)
+    function openProductDrawer(productId) {
+            event.preventDefault(); // stop button from submitting or reloading
+    event.stopPropagation(); // prevent the <a> from being triggered
+      
+           fetch(window.Shopify.routes.root + `products/${productId}.js`)
+      .then(response => response.json())
+      .then(product => {
+        currentDrawerProduct = product;
+
+        const drawerBody = document.getElementById('drawer-body');
+  const placeholder = document.getElementById('kiwi-sizing-placeholder');
+
+        const pickersHTML = renderOptionPickers(product.options);
+        
+        drawerBody.innerHTML = `
+          <button class="close-drawer" onclick="closeProductDrawer()">Close</button>
+          <img src="${product.images[0]}" alt="${product.title}" loading='eager'/>
+          <h2>${product.title}</h2>
+          ${pickersHTML}
+          <div id="kiwi-sizing-placeholder"></div>
+          <button class='custom-add-to-cart-confirm' onclick="confirmAddToCart()">Add to Cart</button>
+        `;
+        window.ks.loadSizing({
+        productData: product,
+        options: {
+          el: placeholder,
+          displayMode: 0, // inline
+        },
+        loaded: function (success) {
+          console.log("KiwiSizing loaded:", success);
+        }
+      });
+        
+        document.querySelector('.product-drawer').classList.add('open');
+        document.getElementById('product-overlay').classList.add('active');
+      });
+        }
   </script>
 </html>
