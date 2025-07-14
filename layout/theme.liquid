@@ -419,14 +419,25 @@
           <button class="close-drawer" onclick="closeProductDrawer()">Close</button>
           <img src="${product.images[0]}" alt="${product.title}" loading='eager'/>
           <h2>${product.title}</h2>
-          {% section 'add-to-cart-modal' %}
           ${pickersHTML}
-        
+          <div id="kiwi-sizing-placeholder"></div>
           <button class='custom-add-to-cart-confirm' onclick="confirmAddToCart()">Add to Cart</button>
         `;
-        
+        const elementToInject = document.getElementById('kiwi-sizing-placeholder');
         document.querySelector('.product-drawer').classList.add('open');
         document.getElementById('product-overlay').classList.add('active');
+        window.ks.loadSizing({
+          productData: product,
+          options: {
+            el: elementToInject,
+            displayMode: 0, // display size chart inline
+          },
+          loaded: function(success) {
+            // if success == True, means there are size charts successfully loaded for the given product data.
+        
+            // This flag is useful to remove the placeholder content (i.e. tabs) in the event when there's no size charts loaded
+          },
+        });
       });
         }
           
