@@ -50,6 +50,7 @@
         "heading_QBGK6n",
         "text_d8M3xd"
       ],
+      "disabled": true,
       "name": "t:sections.rich-text.presets.rich_text.name",
       "settings": {
         "align_text": "center",
@@ -189,6 +190,7 @@
     },
     "collection_carousel_WWwH89": {
       "type": "collection-carousel",
+      "disabled": true,
       "name": "Collection Carousel",
       "settings": {
         "collection": "mujer-bestsellers",
@@ -219,6 +221,7 @@
         "question_g4Rp7x",
         "question_MzfnN8"
       ],
+      "disabled": true,
       "name": "t:sections.faq.presets.faq.name",
       "settings": {
         "title": "FAQs"
@@ -314,6 +317,7 @@
         "image_ibK7E7",
         "image_RjM4Em"
       ],
+      "disabled": true,
       "custom_css": [
         "h2 {color: #fff;}"
       ],
