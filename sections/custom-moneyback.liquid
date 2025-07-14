@@ -1,43 +1,35 @@
 {% schema %}
-{
-  "name": "Money Back Guarantee",
-  "settings": [
-    {
-      "type": "text",
-      "id": "percentage",
-      "label": "Percentage Display",
-      "default": "77 %",
-      "info": "e.g., 77 %"
-    },
-    {
-      "type": "text",
-      "id": "headline",
-      "label": "Guarantee Headline",
-      "default": "GELD TERUG GARANTIE!"
-    },
-    {
-      "type": "richtext",
-      "id": "description",
-      "label": "Guarantee Description",
-      "default": "<p>Bij Giraffi is klanttevredenheid onze topprioriteit. Als je niet helemaal tevreden bent met je aankoop, bieden we een probleemloze 14-dagen geld-terug garantie.</p>"
-    },
-    {
-      "type": "header",
-      "content": "Scrolling Marquee"
-    },
-    {
-      "type": "text",
-      "id": "marquee_items",
-      "label": "Marquee Items (comma-separated)",
-      "default": "KLEED JE MET KLASSE, LUXE VOOR ELKE DAG, A - LEGACY IN THE MAKING, KLEED JE ALS EEN GENTLEMAN, KLEED JE MET KLASSE"
-    }
-  ],
-  "presets": [
-    {
-      "name": "Money Back Guarantee"
-    }
-  ]
-}
+  {
+    "name": "Money Back Guarantee",
+    "settings": [
+      {
+        "type": "text",
+        "id": "headline",
+        "label": "Guarantee Headline",
+        "default": "GELD TERUG GARANTIE!"
+      },
+      {
+        "type": "richtext",
+        "id": "description",
+        "label": "Guarantee Description",
+        "default": "<p>Bij Giraffi is klanttevredenheid onze topprioriteit. Als je niet helemaal tevreden bent met je aankoop, bieden we een probleemloze 14-dagen geld-terug garantie.</p>"
+      },
+      {
+        "type": "header",
+        "content": "Scrolling Marquee"
+      }, {
+        "type": "text",
+        "id": "marquee_items",
+        "label": "Marquee Items (comma-separated)",
+        "default": "KLEED JE MET KLASSE, LUXE VOOR ELKE DAG, A - LEGACY IN THE MAKING, KLEED JE ALS EEN GENTLEMAN, KLEED JE MET KLASSE"
+      }
+    ],
+    "presets": [
+      {
+        "name": "Money Back Guarantee"
+      }
+    ]
+  }
 {% endschema %}
 
 <style>
@@ -51,7 +43,7 @@
 
   .moneyback-details {
     text-align: center;
-    padding: 3rem 1rem 2rem 1rem;
+    padding: 3rem 1rem 2rem;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -67,8 +59,10 @@
 
   .marquee-content {
     display: inline-block;
-    animation: marquee 30s linear infinite; /* Adjust duration for speed */
-    padding-left: 100%; /* Start off-screen */
+    animation: marquee 30s linear infinite;
+    /* Adjust duration for speed */
+    padding-left: 100%;
+    /* Start off-screen */
   }
 
   .marquee-content > span {
@@ -76,13 +70,19 @@
   }
 
   .marquee-item:not(:last-child)::after {
-    content: ' \2022 '; /* Unicode for bullet point */
-    margin: 0 1rem; /* Space around bullet */
+    content: ' \2022 ';
+    /* Unicode for bullet point */
+    margin: 0 1rem;
+    /* Space around bullet */
   }
 
   @keyframes marquee {
-    0% { transform: translateX(0%); }
-    100% { transform: translateX(-100%); }
+    0% {
+      transform: translateX(0%);
+    }
+    100% {
+      transform: translateX(-100%);
+    }
   }
 
   .moneyback-percentage {
@@ -93,28 +93,72 @@
   .moneyback-headline {
     color: #fff !important;
     font-size: 36px;
+    width: 50%;
+  }
+
+  .moneyback-description {
+    width: 30%;
+    text-align: center;
+  }
+
+  /* Mobile styles */
+  @media (max-width: 767px) {
+    .moneyback-headline,
+    .moneyback-description {
+      width: 100%;
+      text-align: center;
+      /* optional: ensure text is centered on mobile */
+    }
   }
 </style>
+
+<script>
+  function animatePercentageSmooth(element, duration = 6000) {
+    const endValue = 100;
+    let startTime = null;
+
+    function update(timestamp) {
+      if (!startTime) startTime = timestamp;
+
+      const progress = Math.min((timestamp - startTime) / duration, 1);
+      const currentValue = Math.floor(progress * endValue);
+      element.textContent = currentValue + '%';
+
+      if (progress < 1) {
+        requestAnimationFrame(update);
+      } else {
+        element.textContent = endValue + '%'; // Ensure it ends exactly at 100%
+      }
+    }
+
+    requestAnimationFrame(update);
+  }
+
+  document.addEventListener('DOMContentLoaded', function () {
+    const el = document.querySelector('.moneyback-percentage');
+    if (el) animatePercentageSmooth(el, 4000); // 4 seconds
+  });
+</script>
 
 <section class="moneyback-section">
   <div class="moneyback-details">
     <!-- Percentage Display -->
     {% if section.settings.percentage != blank %}
-      <h1 class="moneyback-percentage">{{ section.settings.percentage }}</h1>
+      <h1 class="moneyback-percentage">0%</h1>
     {% endif %}
 
     <!-- Headline -->
     {% if section.settings.headline != blank %}
-      <h2 style="width: 50%;" class="moneyback-headline">{{ section.settings.headline }}</h2>
+      <h2 class="moneyback-headline">{{ section.settings.headline }}</h2>
     {% endif %}
 
     <!-- Description -->
     {% if section.settings.description != blank %}
-      <div style="width: 30%; text-align: center;">
+      <div class="moneyback-description">
         {{ section.settings.description }}
       </div>
     {% endif %}
-  </div>
+</div>
 
   <!-- Scrolling Marquee -->
   {% assign marquee_items_array = section.settings.marquee_items | split: ',' | compact %}
