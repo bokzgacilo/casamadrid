@@ -133,9 +133,25 @@
     "main": {
       "type": "main-product",
       "blocks": {
+        "loox_reviews_loox_rating_ADfGkH": {
+          "type": "shopify://apps/loox-reviews/blocks/loox-rating/5c3b337f-fd14-4df5-b1d6-80ec13e6e28e",
+          "settings": {
+            "contentSize": 10,
+            "pattern": "4.9 / 5.0 basado en más de 518 reseñas",
+            "hideText": false,
+            "alignment": "left",
+            "layout": "",
+            "textColor": "",
+            "starColor": "",
+            "showAllReviews": false,
+            "looxOpenFloatingWidget": false,
+            "emptyRatingWidget": false
+          }
+        },
         "custom_AbG3jj": {
           "type": "custom",
           "name": "Rating",
+          "disabled": true,
           "settings": {
             "code": "<a href=\"#social-proofss\" class=\"rating-container\" bis_skin_checked=\"1\">\n    <img src=\"//loramuenchen.de/cdn/shop/t/3/assets/sterne.png?v=19798183704476300331744813930\" alt=\"sterne\" class=\"rating-stars\" style=\"width: 45px; height: auto; margin-right: 5px; margin-top: 5px;\">\n    <span class=\"rating-text\" style=\"font size:1px\"><strong>4.7 / 5.0</strong> basado en más de 8235 reseñas</span>  \n  </a>\n<style>\n .rating-container {\n    margin-bottom: 8px;\n    display: flex;\n    align-items: center;\n}\n    @media (max-width:749px)\n    {\n      span.rating-text {\n    font-size: 14px;\n}\n    }\n  </style>"
           }
@@ -214,6 +230,7 @@
         }
       },
       "block_order": [
+        "loox_reviews_loox_rating_ADfGkH",
         "custom_AbG3jj",
         "title_T63aif",
         "price",
